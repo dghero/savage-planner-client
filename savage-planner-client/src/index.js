@@ -6,14 +6,16 @@ import registerServiceWorker from './registerServiceWorker';
 
 
 //create store
-// import {Provider} from 'react-redux';
-// import {createStore, applyMiddleware} from 'redux';
-// import {someReducer} from './reducers/some';
-// import thunk from 'redux-thunk';
-
+import {Provider} from 'react-redux';
+import {createStore, applyMiddleware} from 'redux';
+import {characterReducer} from './reducers/char';
+import thunk from 'redux-thunk';
+const store = createStore(characterReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
-  <App />,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('root')
 );
 registerServiceWorker();
