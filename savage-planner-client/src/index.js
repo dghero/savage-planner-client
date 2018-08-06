@@ -9,7 +9,8 @@ import registerServiceWorker from './registerServiceWorker';
 // import {Provider} from 'react-redux';
 // import {createStore, applyMiddleware} from 'redux';
 // import {someReducer} from './reducers/some';
-// import thunk from 'redux-thunk'
+// import thunk from 'redux-thunk';
+
 
 ReactDOM.render(
   <App />,

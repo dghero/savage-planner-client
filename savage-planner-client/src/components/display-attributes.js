@@ -11,7 +11,7 @@ export default function DisplayAttributes(props){
     spirit: 4
   };
 
-  const attrKeys = Object.keys(attributes).sort();
+  const attrKeys = Object.keys(attributes);
 
   const attrListItems = attrKeys.map(attr =>{
     const attrName = attr.charAt(0).toUpperCase() + attr.substring(1);

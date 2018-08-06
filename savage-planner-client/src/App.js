@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import DisplayStats from './components/display-stats';
-import InitialStats from './components/initial-stats';
+import StarterStats from './components/starter-stats';
+
 class App extends Component {
   render() {
     return (
       <div className="App">
         <DisplayStats />
-        <InitialStats />
+        <StarterStats />
       </div>
     );
   }
