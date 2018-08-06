@@ -3,7 +3,7 @@ import React from 'react';
 export default function InitialAttributes(props){
 
   return (
-    <div class="initial-attributes">
+    <div className="initial-attributes">
       Initial Attributes
     </div>
   );

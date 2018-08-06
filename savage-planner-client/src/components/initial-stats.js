@@ -5,7 +5,7 @@ import InitialSkills from './initial-skills';
 export default function InitialStats(props){
 
   return (
-    <div class="initial-stats">
+    <div className="initial-stats">
       <InitialAttributes />
       <InitialSkills />
     </div>

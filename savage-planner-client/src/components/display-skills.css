@@ -1,0 +1,12 @@
+.display-skills{
+  display: inline-block;
+  border: 1px solid black;
+  width: auto;
+  margin: auto;
+  text-align: left;
+}
+
+.display-skills ul{
+  list-style-type: none;
+  padding: 0;
+}
