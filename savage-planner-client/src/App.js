@@ -11,6 +11,7 @@ import {fetchCharacter} from './actions/char';
 class App extends Component {
   componentDidMount(prevProps){
     this.props.dispatch(fetchCharacter('5b64b162560e648424b32a61'));
+    //TODO: Change data fetchpoint
   }
 
   render() {

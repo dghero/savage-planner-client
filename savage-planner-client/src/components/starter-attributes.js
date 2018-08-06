@@ -1,41 +1,46 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import './starter-attributes.css';
 
-export default function StarterAttribues(props){
+export function StarterAttribues(props){
 
   //dummy data to get keys
-  const attributes = {
-    strength: 6,
-    vigor: 6,
-    agility: 6,
-    smarts: 8,
-    spirit: 4
-  };
+  // const attributes = {
+  //   strength: 6,
+  //   vigor: 6,
+  //   agility: 6,
+  //   smarts: 8,
+  //   spirit: 4
+  // };
 
   const generateDropdown = function(currentVal){
     return(
-      <select>
-        <option value="4" selected={currentVal===4 ? true : false}>4</option>
-        <option value="6" selected={currentVal===6 ? true : false}>6</option>
-        <option value="8" selected={currentVal===8 ? true : false}>8</option>
-        <option value="10" selected={currentVal===10 ? true : false}>10</option>
-        <option value="12" selected={currentVal===12 ? true : false}>12</option>
+      <select defaultValue={currentVal}>
+        <option value="4">d4</option>
+        <option value="6">d6</option>
+        <option value="8">d8</option>
+        <option value="10">d10</option>
+        <option value="12">d12</option>
       </select>
     );
   };
 
-  const attrKeys = Object.keys(attributes);
+  let attrListItems;
 
-  const attrListItems = attrKeys.map(attr =>{
-    const attrName = attr.charAt(0).toUpperCase() + attr.substring(1);
-    const attrVal = attributes[attr];
-    return (
-      <li key={`final-${attr}`}>
-        {attrName}: d{generateDropdown(attrVal)}
-      </li>
-    );
-  });
+  if(Object.keys(props.character).length > 1 ){
+    const attributes = props.character.initial.attributes;
+    const attrKeys = Object.keys(attributes);
 
+    attrListItems = attrKeys.map(attr =>{
+      const attrName = attr.charAt(0).toUpperCase() + attr.substring(1);
+      const attrVal = attributes[attr];
+      return (
+        <li key={`final-${attr}`}>
+          {attrName}: {generateDropdown(attrVal)}
+        </li>
+      );
+    });
+}
   return (
     <div className="starter-attributes">
       Starter Attributes
@@ -45,3 +50,10 @@ export default function StarterAttribues(props){
     </div>
   );
 }
+
+
+const mapStateToProps = state => ({
+  character: state.character
+});
+
+export default connect(mapStateToProps)(StarterAttribues);

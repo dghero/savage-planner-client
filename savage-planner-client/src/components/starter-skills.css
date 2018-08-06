@@ -9,4 +9,10 @@
 .starter-skills ul{
   list-style-type: none;
   padding: 0;
+  -moz-column-count: 2;
+  -moz-column-gap: 2px;
+  -webkit-column-count: 2;
+  -webkit-column-gap: 2px;
+  column-count: 2;
+  column-gap: 2px;
 }
