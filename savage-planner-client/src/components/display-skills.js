@@ -32,15 +32,14 @@ export function DisplaySkills(props){
       case 'smarts': return 'Sm';
       case 'spirit': return 'Sp';
       case 'vigor': return 'Vi';
+      default: return '??';
     }
   };
   
-  // console.log(props.character);
   let skillListItems;
   
-  if(Object.keys(props.character).length > 1 ){
-    console.log('display-skills initial: ', props.character.initial.skills);
-    const skills = props.character.initial.skills;
+  if(Object.keys(props.character.stats).length > 0 ){
+    const skills = props.character.stats.initial.skills;
     const skillKeys = Object.keys(skills).sort();
 
     skillListItems = skillKeys.map(skill =>{

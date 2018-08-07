@@ -27,8 +27,8 @@ export function StarterAttribues(props){
 
   let attrListItems;
 
-  if(Object.keys(props.character).length > 1 ){
-    const attributes = props.character.initial.attributes;
+  if(Object.keys(props.character.stats).length > 0 ){
+    const attributes = props.character.stats.initial.attributes;
     const attrKeys = Object.keys(attributes);
 
     attrListItems = attrKeys.map(attr =>{

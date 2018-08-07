@@ -1,0 +1,25 @@
+.advance-list{
+  display: inline-block;
+  width: auto;
+  margin: auto;
+  text-align: left;
+}
+
+.advance-list ul{
+  list-style-type: none;
+  padding: 0;
+  -moz-column-count: 3;
+  -moz-column-gap: 2px;
+  -webkit-column-count: 3;
+  -webkit-column-gap: 2px;
+  column-count: 3;
+  column-gap: 2px;
+}
+
+.advance-list li{
+  border: 1px solid black;
+}
+
+.advance-item--value{
+  display:inline-block;
+}

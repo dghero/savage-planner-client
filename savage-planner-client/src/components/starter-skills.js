@@ -32,6 +32,7 @@ export function StarterSkills(props){
       case 'smarts': return 'Sm';
       case 'spirit': return 'Sp';
       case 'vigor': return 'Vi';
+      default: return '??';
     }
   };
 
@@ -50,8 +51,8 @@ export function StarterSkills(props){
   };
 
   let skillListItems;
-  if(Object.keys(props.character).length > 1 ){
-    const skills = props.character.initial.skills;
+  if(Object.keys(props.character.stats).length > 0 ){
+    const skills = props.character.stats.initial.skills;
     const skillKeys = Object.keys(skills).sort();
     //get data and generate skills
     skillListItems = skillKeys.map(skill =>{
