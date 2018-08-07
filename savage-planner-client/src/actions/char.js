@@ -27,16 +27,29 @@ export const fetchCharacter = id => dispatch =>{
     });
 };
 
-export const SET_STARTER_ATTR = 'SET_STARTER_ATTR';
-export const setStarterAttr = attribute =>({
-  type: SET_STARTER_ATTR,
-  attribute
+export const updateStarterAttr = (attr, val) => dispatch =>{
+  //connect to db and PUT character.initial.attributes[attr].val
+  dispatch(updateStateStarterAttr(attr, val));
+};
+
+export const updateStarterSkill = (skill, val) => dispatch =>{
+  //connect to db and PUT character.initial.skills[skill].val
+  dispatch(updateStateStarterSkill(skill, val));
+};
+
+
+export const UPDATE_STATE_STARTER_ATTR = 'UPDATE_STATE_STARTER_ATTR';
+export const updateStateStarterAttr = (attr, val) =>({
+  type: UPDATE_STATE_STARTER_ATTR,
+  attr,
+  val
 });
 
-export const SET_STARTER_SKILL = 'SET_STARTER_SKILL';
-export const setStarterSkill = skill =>({
-  type: SET_STARTER_SKILL,
-  skill
+export const UPDATE_STATE_STARTER_SKILL = 'UPDATE_STATE_STARTER_SKILL';
+export const updateStateStarterSkill = (skill, val) =>({
+  type: UPDATE_STATE_STARTER_SKILL,
+  skill,
+  val
 });
 
 

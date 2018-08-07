@@ -2,20 +2,16 @@ import React from 'react';
 import {connect} from 'react-redux';
 import './starter-attributes.css';
 
+import {updateStarterAttr} from '../actions/char';
+// import StarterAttributeDropdown from './starter-attribute-dropdown'
+
 export function StarterAttribues(props){
 
-  //dummy data to get keys
-  // const attributes = {
-  //   strength: 6,
-  //   vigor: 6,
-  //   agility: 6,
-  //   smarts: 8,
-  //   spirit: 4
-  // };
-
-  const generateDropdown = function(currentVal){
+  const generateDropdown = function(attr, currentVal){
     return(
-      <select defaultValue={currentVal}>
+      <select defaultValue={currentVal} onChange={e=>
+            props.dispatch(updateStarterAttr(attr, e.target.value))
+          }>
         <option value="4">d4</option>
         <option value="6">d6</option>
         <option value="8">d8</option>
@@ -36,7 +32,7 @@ export function StarterAttribues(props){
       const attrVal = attributes[attr];
       return (
         <li key={`final-${attr}`}>
-          {attrName}: {generateDropdown(attrVal)}
+          {attrName}: {generateDropdown(attr, attrVal)}
         </li>
       );
     });

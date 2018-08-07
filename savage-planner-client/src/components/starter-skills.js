@@ -2,6 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import './starter-skills.css';
 
+import {updateStarterSkill} from '../actions/char';
+
 export function StarterSkills(props){
 
   //dummy data for keys
@@ -37,9 +39,11 @@ export function StarterSkills(props){
   };
 
   //Helper function for generating dropdown options
-  const generateDropdown = function(currentVal){
+  const generateDropdown = function(skill, currentVal){
     return(
-      <select defaultValue={currentVal}>
+      <select defaultValue={currentVal} onChange={e=>
+        props.dispatch(updateStarterSkill(skill, e.target.value))
+      }>
         <option value="0">d0</option>
         <option value="4">d4</option>
         <option value="6">d6</option>
@@ -61,7 +65,7 @@ export function StarterSkills(props){
       const skillVal = skills[skill].val;
       return (
         <li key={`final-${skill}`}>
-          {skillName} ({linkedAttr}): {generateDropdown(skillVal)}
+          {skillName} ({linkedAttr}): {generateDropdown(skill, skillVal)}
         </li>
       );
     });
