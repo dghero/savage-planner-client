@@ -30,7 +30,7 @@ export function AdvanceList(props){
     );
   };
 
-  const generateValDropdown = function(currentType, val){
+  const generateValDropdown = function(currentType, currAdv){
     let valueHtml;
     const skills = props.character.stats.initial.skills;
     const skillKeys = Object.keys(skills);
@@ -48,7 +48,7 @@ export function AdvanceList(props){
       case 'attr':
         valueHtml = (
           <div className="advance-item--value">
-            Val: <select defaultValue={val}>
+            Val: <select defaultValue={currAdv.val}>
               <option value='none'>Select...</option>
               <option value='strength'>Strength</option>
               <option value='agility'>Agility</option>
@@ -60,11 +60,10 @@ export function AdvanceList(props){
         break;
       
       case 'edge':
-        // console.log(val.id);
         //TODO: Find out why this won't select properly
         valueHtml = (
           <div className="advance-item--value">
-            Val: <select defaultValue={val.id}>
+            Val: <select defaultValue={currAdv.edgeId}>
               <option value="none">Select...</option>
               {edgeOptions}
             </select>
@@ -74,7 +73,7 @@ export function AdvanceList(props){
       case 'newskill':
         valueHtml = (
           <div className="advance-item--value">
-            Val: <select defaultValue={val}>
+            Val: <select defaultValue={currAdv.val}>
               <option value="none">Select...</option>
               {skillOptions}
             </select>
@@ -84,7 +83,7 @@ export function AdvanceList(props){
       case '1skill':
         valueHtml = (
           <div className="advance-item--value">
-            Val: <select defaultValue={val}>
+            Val: <select defaultValue={currAdv.val}>
               <option value="none">Select...</option>
               {skillOptions}
             </select>
@@ -94,11 +93,11 @@ export function AdvanceList(props){
       case '2skills':
         valueHtml = (
           <div className="advance-item--value">
-            Val: <select defaultValue={val.val1}>
+            Val: <select defaultValue={currAdv.val}>
               <option value="none">Select...</option>
               {skillOptions}
             </select>
-            <select defaultValue={val.val2}>
+            <select defaultValue={currAdv.val2}>
               <option value="none">Select...</option>
               {skillOptions}
             </select>
@@ -126,8 +125,8 @@ export function AdvanceList(props){
     //XP increments by 5, starts at 5. 75/5 = 15 items
     for(let i = 0; i<= 75/5-1; i++){
       const currentAdvance = advances[i];
-      const advTypeDropdown = generateTypeDropdown(currentAdvance.type);
-      const advValDropdown = generateValDropdown(currentAdvance.type, currentAdvance.val);
+      const advTypeDropdown = generateTypeDropdown(currentAdvance.advType);
+      const advValDropdown = generateValDropdown(currentAdvance.advType, currentAdvance);
       const currentItem = (
         <li key={`adv-${currentAdvance.xp}`}>
           XP: {currentAdvance.xp}

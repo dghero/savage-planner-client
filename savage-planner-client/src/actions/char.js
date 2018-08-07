@@ -29,7 +29,26 @@ export const fetchCharacter = id => dispatch =>{
 
 export const updateStarterAttr = (attr, val) => dispatch =>{
   //connect to db and PUT character.initial.attributes[attr].val
-  dispatch(updateStateStarterAttr(attr, val));
+  
+  const updateObj = {initial: { attributes: {} }};
+  updateObj.initial.attributes[attr] = {val: val};
+
+  console.log('updateObj: ', updateObj);
+  //get ID directly from store
+  return fetch(`${API_BASE_URL}/api/characters/5b64b162560e648424b32a61`, {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json'
+      },
+        body: JSON.stringify(updateObj)
+    })
+    .then(res =>{
+      dispatch(updateStateStarterAttr(attr, val));
+    })
+    .catch(err =>{
+      console.error(err);
+    }) ;
+  
 };
 
 export const updateStarterSkill = (skill, val) => dispatch =>{

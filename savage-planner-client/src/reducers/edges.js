@@ -12,7 +12,6 @@ const initialState = {
 export function edgeReducer(state=initialState, action){
   switch(action.type){
     case FETCH_EDGES_SUCCESS:
-      console.log('Storing edges...');
       return {...state,
               list: action.edges};
     case FETCH_EDGES_ERROR:

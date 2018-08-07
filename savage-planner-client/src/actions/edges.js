@@ -18,7 +18,6 @@ export const fetchEdges = () => dispatch =>{
       return res.json();
     })
     .then(res =>{
-      console.log(res);
       return dispatch(fetchEdgesSuccess(res));
     })
     .catch(err =>{

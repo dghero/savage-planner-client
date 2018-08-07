@@ -13,7 +13,6 @@ const initialState = {
 
 export function characterReducer(state=initialState, action){
   let newStats = {...state.stats};
-  console.log('newStats: ', newStats);
   switch(action.type){
     case FETCH_CHARACTER_SUCCESS:
       return {...state,
