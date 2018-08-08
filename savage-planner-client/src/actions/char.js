@@ -60,14 +60,31 @@ export const updateStarterSkill = (skill, val) => dispatch =>{
 };
 
 export const updateAdvanceType = (xp, advType) => dispatch =>{
-  const xpIndex = xp/5 - 1;
-  const updateObj = {advances:[]};
-  updateObj.advances[xpIndex] = {
+  const updateObj = {advance:{}};
+  updateObj.advance = {
     xp,
-    advType
+    advType,
+    val: null,
+    val2: null,
+    edgeId: null
   };
 
-  dispatch(updateStateAdvanceType(xp, advType));
+  return fetch(`${API_BASE_URL}/api/characters/5b64b162560e648424b32a61`, {
+    method: 'PUT',
+    headers: { 'content-type': 'application/json'},
+      body: JSON.stringify(updateObj)
+  })
+  .then(res =>{
+    if (!res.ok) {
+      return Promise.reject(res.statusText);
+    }  
+    dispatch(updateStateAdvanceType(xp, advType));
+  })
+  .catch(err =>{
+    console.error(err);
+    //TODO: Action/reducer for failed call
+  });
+
 };
 
 export const FETCH_CHARACTER_SUCCESS = 'FETCH_CHARACTER_SUCCESS';
