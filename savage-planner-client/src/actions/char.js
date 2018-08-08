@@ -118,7 +118,8 @@ export const updateAdvanceValues = (xp, advType, val, val2, edgeId) => dispatch 
   .then(res =>{
     if (!res.ok) {
       return Promise.reject(res.statusText);
-    }  
+    } 
+    console.log('updateAdvanceValues: ', xp, advType, val, val2, edgeId);
     dispatch(updateStateAdvanceValues(xp, advType, val, val2, edgeId));
   })
   .catch(err =>{
@@ -137,6 +138,12 @@ export const FETCH_CHARACTER_ERROR = 'FETCH_CHARACTER_ERROR';
 export const fetchCharacterError = error =>({
   type: FETCH_CHARACTER_SUCCESS,
   error
+});
+
+export const SET_MAX_DISPLAY_XP = 'SET_MAX_DISPLAY_XP';
+export const setMaxDisplayXp = maxXp =>({
+  type: SET_MAX_DISPLAY_XP,
+  maxXp
 });
 
 export const UPDATE_STATE_STARTER_ATTR = 'UPDATE_STATE_STARTER_ATTR';
@@ -162,7 +169,7 @@ export const updateStateAdvanceType = (xp, advType) =>({
 
 export const UPDATE_STATE_ADVANCE_VALUES = 'UPDATE_STATE_ADVANCE_VALUES';
 export const updateStateAdvanceValues = (xp, advType, val, val2, edgeId) =>({
-  type: UPDATE_STATE_ADVANCE_TYPE,
+  type: UPDATE_STATE_ADVANCE_VALUES,
   xp,
   advType,
   val,

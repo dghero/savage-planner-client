@@ -29,23 +29,44 @@ export function DisplaySkills(props){
     switch(attr){
       case 'strength': return 'St';
       case 'agility': return 'Ag';
+      case 'vigor': return 'Vi';
       case 'smarts': return 'Sm';
       case 'spirit': return 'Sp';
-      case 'vigor': return 'Vi';
       default: return '??';
     }
   };
   
   let skillListItems;
   
-  if(Object.keys(props.character.stats).length > 0 ){
+  if(Object.keys(props.character.stats).length > 0 ){ //chunky bug handling for initial load
     const skills = props.character.stats.initial.skills;
     const skillKeys = Object.keys(skills).sort();
 
+    //Get advance bumps
+    const advStats = {};
+    skillKeys.forEach(key =>{
+      advStats[key] = 0;
+    });
+
+    props.character.stats.advances.forEach(advance =>{
+      if(advance.xp <= props.character.maxXp){
+        switch(advance.advType){
+          case 'newskill': advStats[advance.val] += 4; break;
+          case '1skill': advStats[advance.val] += 2; break;
+          case '2skills':
+                advStats[advance.val] +=2;
+                advStats[advance.val2] +=2;
+                break;
+          default:
+        }
+      }
+    });
+
+    //Generate li elements
     skillListItems = skillKeys.map(skill =>{
       const skillName = skill.charAt(0).toUpperCase() + skill.substring(1);
       const linkedAttr = getAttrAbbrev(skills[skill].attr);
-      const skillVal = skills[skill].val;
+      const skillVal = skills[skill].val + advStats[skill];
       return (
         <li key={`final-${skill}`}>
           {skillName} ({linkedAttr}): <span className="display-skills--value">d{skillVal}</span>

@@ -1,6 +1,7 @@
 import{
   FETCH_CHARACTER_SUCCESS,
   FETCH_CHARACTER_ERROR,
+  SET_MAX_DISPLAY_XP,
   UPDATE_STATE_STARTER_ATTR,
   UPDATE_STATE_STARTER_SKILL,
   UPDATE_STATE_ADVANCE_TYPE,
@@ -10,7 +11,8 @@ import{
 
 const initialState = {
   stats: {},
-  charError: null
+  charError: null,
+  maxXp: 75
 };
 
 export function characterReducer(state=initialState, action){
@@ -24,6 +26,10 @@ export function characterReducer(state=initialState, action){
     case FETCH_CHARACTER_ERROR:
       return {...state,
               error: action.error};
+
+    case SET_MAX_DISPLAY_XP:
+        return{...state,
+              maxXp: action.maxXp}
 
     case UPDATE_STATE_STARTER_ATTR:
       newStats.initial.attributes[action.attr] = action.val;
