@@ -1,11 +1,14 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {updateAdvanceType} from '../actions/char';
+import {
+  updateAdvanceType,
+  updateAdvanceValues
+} from '../actions/char';
 
 export function AdvanceListItem(props){
 
-  //Helper function for formatting
+  //Helper function for formatting skills
   const getAttrAbbrev = function(attr){
     switch(attr){
       case 'strength': return 'St';
@@ -17,11 +20,10 @@ export function AdvanceListItem(props){
     }
   };
 
-  //Helper function for generating dropdown options
-  const generateTypeDropdown = function(currentType){
+  const generateTypeDropdown = function(currAdv){
     return (
-      <select defaultValue={currentType} onChange={e =>{
-        props.dispatch(updateAdvanceType(currentAdvance.xp, e.target.value));
+      <select defaultValue={currAdv.advType} onChange={e =>{
+        props.dispatch(updateAdvanceType(currAdv.xp, e.target.value));
       }}>
         <option value="none" key='none'>None</option>
         <option value="edge" key='edge'>New Edge</option>
@@ -33,7 +35,7 @@ export function AdvanceListItem(props){
     );
   };
 
-  const generateValDropdown = function(currentType, currAdv){
+  const generateValDropdown = function(currAdv){
     let valueHtml;
     const skills = props.character.stats.initial.skills;
     const skillKeys = Object.keys(skills);
@@ -51,11 +53,13 @@ export function AdvanceListItem(props){
 
     const noneOption = (<option value='none' key='none'>Select...</option>);
 
-    switch(currentType){
+    switch(currAdv.advType){
       case 'attr':
         valueHtml = (
           <div className="advance-item--value">
-            Val: <select defaultValue={currAdv.val}>
+            Val: <select defaultValue={currAdv.val} onChange={e =>{
+              props.dispatch(updateAdvanceValues(currAdv.xp, currAdv.advType, e.target.value, null, null));
+            }}>
               {noneOption}
               <option value='strength' key={'strength'}>Strength</option>
               <option value='agility' key={'agility'}>Agility</option>
@@ -80,7 +84,9 @@ export function AdvanceListItem(props){
       case 'newskill':
         valueHtml = (
           <div className="advance-item--value">
-            Val: <select defaultValue={currAdv.val}>
+            Val: <select defaultValue={currAdv.val} onChange={e =>{
+              props.dispatch(updateAdvanceValues(currAdv.xp, currAdv.advType, e.target.value, null, null));
+            }}>
               {noneOption}
               {skillOptions}
             </select>
@@ -90,7 +96,9 @@ export function AdvanceListItem(props){
       case '1skill':
         valueHtml = (
           <div className="advance-item--value">
-            Val: <select defaultValue={currAdv.val}>
+            Val: <select defaultValue={currAdv.val} onChange={e =>{
+              props.dispatch(updateAdvanceValues(currAdv.xp, currAdv.advType, e.target.value, null, null));
+            }}>
               {noneOption}
               {skillOptions}
             </select>
@@ -100,11 +108,15 @@ export function AdvanceListItem(props){
       case '2skills':
         valueHtml = (
           <div className="advance-item--value">
-            Val: <select defaultValue={currAdv.val}>
+            Val: <select defaultValue={currAdv.val} onChange={e =>{
+              props.dispatch(updateAdvanceValues(currAdv.xp, currAdv.advType, e.target.value, currAdv.val2, null));
+            }}>
               {noneOption}
               {skillOptions}
             </select>
-            <select defaultValue={currAdv.val2}>
+            <select defaultValue={currAdv.val2} onChange={e =>{
+              props.dispatch(updateAdvanceValues(currAdv.xp, currAdv.advType, currAdv.val, e.target.value, null));
+            }}>
               {noneOption}
               {skillOptions}
             </select>
@@ -125,8 +137,8 @@ export function AdvanceListItem(props){
   };
 
   const currentAdvance = props.currentAdvance;
-  const advTypeDropdown = generateTypeDropdown(currentAdvance.advType);
-  const advValDropdown = generateValDropdown(currentAdvance.advType, currentAdvance);
+  const advTypeDropdown = generateTypeDropdown(currentAdvance);
+  const advValDropdown = generateValDropdown(currentAdvance);
 
   return(
     <li key={`adv-${currentAdvance.xp}`}>

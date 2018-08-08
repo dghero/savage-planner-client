@@ -3,7 +3,8 @@ import{
   FETCH_CHARACTER_ERROR,
   UPDATE_STATE_STARTER_ATTR,
   UPDATE_STATE_STARTER_SKILL,
-  UPDATE_STATE_ADVANCE_TYPE
+  UPDATE_STATE_ADVANCE_TYPE,
+  UPDATE_STATE_ADVANCE_VALUES
 
 } from '../actions/char';
 
@@ -14,6 +15,7 @@ const initialState = {
 
 export function characterReducer(state=initialState, action){
   let newStats = {...state.stats};
+  let xpIndex;
   switch(action.type){
     case FETCH_CHARACTER_SUCCESS:
       return {...state,
@@ -36,10 +38,26 @@ export function characterReducer(state=initialState, action){
       }
 
     case UPDATE_STATE_ADVANCE_TYPE:
-      const xpIndex = action.xp/5 - 1;
+      xpIndex = action.xp/5 - 1;
       newStats.advances[xpIndex] = {
         xp: action.xp,
-        advType: action.advType
+        advType: action.advType,
+        val: null,
+        val2: null,
+        edgeId: null
+      }
+      return {...state,
+        stats: newStats
+      }
+    
+    case UPDATE_STATE_ADVANCE_VALUES:
+      xpIndex = action.xp/5 - 1;
+      newStats.advances[xpIndex] = {
+        xp: action.xp,
+        advType: action.advType,
+        val: action.val,
+        val2: action.val2,
+        edgeId: action.edgeId
       }
       return {...state,
         stats: newStats

@@ -84,7 +84,47 @@ export const updateAdvanceType = (xp, advType) => dispatch =>{
     console.error(err);
     //TODO: Action/reducer for failed call
   });
+};
 
+export const updateAdvanceValues = (xp, advType, val, val2, edgeId) => dispatch =>{
+  const updateObj = {advance:{}};
+  updateObj.advance = {
+    xp,
+    advType,
+    val: null,
+    val2: null,
+    edgeId: null
+  };
+
+  switch(advType){
+    case 'edge': updateObj.advance.edgeId = edgeId; break;
+    case 'attr': updateObj.advance.val = val; break;
+    case 'newskill': updateObj.advance.val = val; break;
+    case '1skill': updateObj.advance.val = val; break;
+    case '2skills':
+        updateObj.advance.val = val;
+        updateObj.advance.val2 = val2;
+        break;
+    default:
+      console.error('invalid type in updateAdvanceValues');
+      //TODO: error something? Maybe?
+  }
+
+  return fetch(`${API_BASE_URL}/api/characters/5b64b162560e648424b32a61`, {
+    method: 'PUT',
+    headers: { 'content-type': 'application/json'},
+      body: JSON.stringify(updateObj)
+  })
+  .then(res =>{
+    if (!res.ok) {
+      return Promise.reject(res.statusText);
+    }  
+    dispatch(updateStateAdvanceValues(xp, advType, val, val2, edgeId));
+  })
+  .catch(err =>{
+    console.error(err);
+    //TODO: Action/reducer for failed call
+  });
 };
 
 export const FETCH_CHARACTER_SUCCESS = 'FETCH_CHARACTER_SUCCESS';
@@ -118,6 +158,16 @@ export const updateStateAdvanceType = (xp, advType) =>({
   type: UPDATE_STATE_ADVANCE_TYPE,
   xp,
   advType
+});
+
+export const UPDATE_STATE_ADVANCE_VALUES = 'UPDATE_STATE_ADVANCE_VALUES';
+export const updateStateAdvanceValues = (xp, advType, val, val2, edgeId) =>({
+  type: UPDATE_STATE_ADVANCE_TYPE,
+  xp,
+  advType,
+  val,
+  val2,
+  edgeId
 });
 
 
