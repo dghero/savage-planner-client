@@ -66,7 +66,11 @@ export function DisplaySkills(props){
     skillListItems = skillKeys.map(skill =>{
       const skillName = skill.charAt(0).toUpperCase() + skill.substring(1);
       const linkedAttr = getAttrAbbrev(skills[skill].attr);
-      const skillVal = skills[skill].val + advStats[skill];
+
+      let skillVal = skills[skill].val + advStats[skill];
+      if (skillVal > 12)
+        skillVal = `12+${(skillVal-12)/2}`;
+
       return (
         <li key={`final-${skill}`}>
           {skillName} ({linkedAttr}): <span className="display-skills--value">d{skillVal}</span>

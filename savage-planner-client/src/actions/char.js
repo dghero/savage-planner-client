@@ -17,7 +17,8 @@ export const fetchCharacter = id => dispatch =>{
 
 export const updateStarterAttr = (attr, val) => dispatch =>{
   const updateObj = {initial: { attributes: {} }};
-  updateObj.initial.attributes[attr] = parseInt(val, 10);
+  const valFormatted = parseInt(val, 10);
+  updateObj.initial.attributes[attr] = valFormatted;
 
   //TODO: get ID directly from store
   return fetch(`${API_BASE_URL}/api/characters/5b64b162560e648424b32a61`, {
@@ -29,7 +30,7 @@ export const updateStarterAttr = (attr, val) => dispatch =>{
       if (!res.ok) {
         return Promise.reject(res.statusText);
       }
-      dispatch(updateStateStarterAttr(attr, val));
+      dispatch(updateStateStarterAttr(attr, valFormatted));
     })
     .catch(err =>{
       console.error(err);
@@ -39,7 +40,8 @@ export const updateStarterAttr = (attr, val) => dispatch =>{
 
 export const updateStarterSkill = (skill, val) => dispatch =>{
   const updateObj = {initial: { skills: {} }};
-  updateObj.initial.skills[skill] = {val: parseInt(val, 10)};
+  const valFormatted = parseInt(val, 10);
+  updateObj.initial.skills[skill] = {val: valFormatted};
 
   //TODO: get ID directly from store
   return fetch(`${API_BASE_URL}/api/characters/5b64b162560e648424b32a61`, {
@@ -51,7 +53,7 @@ export const updateStarterSkill = (skill, val) => dispatch =>{
       if (!res.ok) {
         return Promise.reject(res.statusText);
       }
-      dispatch(updateStateStarterSkill(skill, val));
+      dispatch(updateStateStarterSkill(skill, valFormatted));
     })
     .catch(err =>{
       console.error(err);

@@ -18,9 +18,25 @@ export function DisplayAttributes(props){
     const attributes = props.character.stats.initial.attributes;
     const attrKeys = Object.keys(attributes);
 
+    //Get advance bumps
+    const advStats = {};
+    attrKeys.forEach(key =>{
+      advStats[key] = 0;
+    });
+
+    props.character.stats.advances.forEach(advance =>{
+      if(advance.xp <= props.character.maxXp && advance.advType){
+        advStats[advance.val] += 2;
+      }
+    });
+
     attrListItems = attrKeys.map(attr =>{
       const attrName = attr.charAt(0).toUpperCase() + attr.substring(1);
-      const attrVal = attributes[attr];
+      
+      let attrVal = attributes[attr] + advStats[attr];
+      if (attrVal > 12)
+        attrVal = `12+${(attrVal-12)/2}`;
+
       return (
         <li key={`final-${attr}`}>
           {attrName}: d{attrVal}
