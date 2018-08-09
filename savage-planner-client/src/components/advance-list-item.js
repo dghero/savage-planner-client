@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
+import AdvanceSkillOptions from './advance-skill-options';
+
 import {
   updateAdvanceType,
   updateAdvanceValues
@@ -37,15 +39,15 @@ export function AdvanceListItem(props){
 
   const generateValDropdown = function(currAdv){
     let valueHtml;
-    const skills = props.character.stats.initial.skills;
-    const skillKeys = Object.keys(skills);
+    // const skills = props.character.stats.initial.skills;
+    // const skillKeys = Object.keys(skills);
 
-    const skillOptions = skillKeys.map(skill =>(
-      <option value={skill} key={skill}>
-        {skill.charAt(0).toUpperCase() + skill.substring(1)}
-        ({getAttrAbbrev(skills[skill].attr)})
-      </option>
-    ));
+    // const skillOptions = skillKeys.map(skill =>(
+    //   <option value={skill} key={skill}>
+    //     {skill.charAt(0).toUpperCase() + skill.substring(1)}
+    //     ({getAttrAbbrev(skills[skill].attr)})
+    //   </option>
+    // ));
 
     const edgeOptions = props.edges.list.map(edge =>
       (<option value={edge.id} key={edge.name}>{edge.name}</option>)
@@ -84,11 +86,11 @@ export function AdvanceListItem(props){
       case 'newskill':
         valueHtml = (
           <div className="advance-item--value">
-            Val: <select defaultValue={currAdv.val} onChange={e =>{
+            Val:
+            <select defaultValue={currAdv.val} onChange={e =>{
               props.dispatch(updateAdvanceValues(currAdv.xp, currAdv.advType, e.target.value, null, null));
             }}>
-              {noneOption}
-              {skillOptions}
+              <AdvanceSkillOptions key={`${currAdv.xp}-${currAdv.advType}`} />
             </select>
           </div>);
         break;
@@ -99,8 +101,7 @@ export function AdvanceListItem(props){
             Val: <select defaultValue={currAdv.val} onChange={e =>{
               props.dispatch(updateAdvanceValues(currAdv.xp, currAdv.advType, e.target.value, null, null));
             }}>
-              {noneOption}
-              {skillOptions}
+              <AdvanceSkillOptions key={`${currAdv.xp}-${currAdv.advType}`} />
             </select>
           </div>);
         break;
@@ -111,14 +112,12 @@ export function AdvanceListItem(props){
             Val: <select defaultValue={currAdv.val} onChange={e =>{
               props.dispatch(updateAdvanceValues(currAdv.xp, currAdv.advType, e.target.value, currAdv.val2, null));
             }}>
-              {noneOption}
-              {skillOptions}
+              <AdvanceSkillOptions key={`${currAdv.xp}-${currAdv.advType}-1`} />
             </select>
             <select defaultValue={currAdv.val2} onChange={e =>{
               props.dispatch(updateAdvanceValues(currAdv.xp, currAdv.advType, currAdv.val, e.target.value, null));
             }}>
-              {noneOption}
-              {skillOptions}
+              <AdvanceSkillOptions key={`${currAdv.xp}-${currAdv.advType}-2`} />
             </select>
           </div>);
           break;

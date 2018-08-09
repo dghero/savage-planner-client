@@ -11,8 +11,8 @@ import {fetchEdges} from './actions/edges';
 
 class App extends Component {
   componentDidMount(prevProps){
-    this.props.dispatch(fetchCharacter('5b64b162560e648424b32a61'));
     this.props.dispatch(fetchEdges());
+    this.props.dispatch(fetchCharacter('5b64b162560e648424b32a61'));
   }
 
   render() {

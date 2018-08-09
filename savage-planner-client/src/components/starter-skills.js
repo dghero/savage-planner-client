@@ -54,14 +54,17 @@ export function StarterSkills(props){
     );
   };
 
+  //Skill data
   let skillListItems;
   const skills = props.character.stats.initial.skills;
   const skillKeys = Object.keys(skills).sort();
-  //get data and generate skills
+
+  //generate DOM elements for each skill
   skillListItems = skillKeys.map(skill =>{
     const skillName = skill.charAt(0).toUpperCase() + skill.substring(1);
     const linkedAttr = getAttrAbbrev(skills[skill].attr);
     const skillVal = skills[skill].val;
+    
     return (
       <li key={`final-${skill}`}>
         {skillName} ({linkedAttr}): {generateDropdown(skill, skillVal)}
