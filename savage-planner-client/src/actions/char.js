@@ -120,12 +120,17 @@ export const updateAdvanceValues = (xp, advType, val, val2, edgeId) => dispatch 
     headers: { 'content-type': 'application/json'},
       body: JSON.stringify(updateObj)
   })
-  .then(res =>{
+  .then(res => {
     if (!res.ok) {
       return Promise.reject(res.statusText);
     } 
-    console.log('updateAdvanceValues: ', xp, advType, val, val2, edgeId);
-    dispatch(updateStateAdvanceValues(xp, advType, val, val2, edgeId));
+    return res.json();
+  })
+  .then(res =>{
+    const newEdge = res.advances[(xp/5)-1].edgeId;
+    console.log('New Edge: ', newEdge); 
+    console.log('updateAdvanceValues: ', xp, advType, val, val2, newEdge);
+    dispatch(updateStateAdvanceValues(xp, advType, val, val2, newEdge));
   })
   .catch(err =>{
     console.error(err);

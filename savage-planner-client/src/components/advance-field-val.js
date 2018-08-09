@@ -38,9 +38,7 @@ export function AdvanceFieldVal(props){
       break;
     
     case 'edge':
-      console.log(currAdv);
       edgeTarget = (currAdv.edgeId  ? currAdv.edgeId.id : 'none');
-      console.log('edgeTarget: ', edgeTarget);
       valueHtml = (
         <div className="advance-field--value">
           Val: <select defaultValue={edgeTarget} onChange={e =>{
