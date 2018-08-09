@@ -38,10 +38,11 @@ export function AdvanceFieldVal(props){
       break;
     
     case 'edge':
-      //TODO: Find out why this won't select properly
       valueHtml = (
         <div className="advance-field--value">
-          Val: <select defaultValue={currAdv.edgeId}>
+          Val: <select defaultValue={currAdv.edgeId} onChange={e =>{
+            props.dispatch(updateAdvanceValues(currAdv.xp, currAdv.advType, null, null, e.target.value));
+          }} >
             <AdvanceOptionsEdges />
           </select>
         </div>);
