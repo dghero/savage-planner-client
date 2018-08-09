@@ -4,26 +4,6 @@ import {connect} from 'react-redux';
 
 export function DisplaySkills(props){
 
-  //dummy data
-  // const skills = {
-  //   athletics:{val:0, attr: 'strength'},
-  //   fighting:{val:0, attr: 'agility'},
-  //   healing:{val:0, attr: 'smarts'},
-  //   intimidation:{val:0, attr: 'spirit'},
-  //   investigation:{val:0, attr: 'smarts'},
-  //   notice:{val:0, attr: 'smarts'},
-  //   persuasion:{val:0, attr: 'spirit'},
-  //   repair:{val:0, attr: 'smarts'},
-  //   riding:{val:0, attr: 'agility'},
-  //   shooting:{val:0, attr: 'agility'},
-  //   stealth:{val:0, attr: 'agility'},
-  //   streetwise:{val:0, attr: 'smarts'},
-  //   survival:{val:0, attr: 'smarts'},
-  //   taunt:{val:0, attr: 'spirit'},
-  //   throwing:{val:0, attr: 'agility'},
-  //   tracking:{val:0, attr: 'smarts'}
-  // };
-
   //Helper function for formatting
   const getAttrAbbrev = function(attr){
     switch(attr){
@@ -76,7 +56,6 @@ export function DisplaySkills(props){
     );
   });
   
-
   return (
     <div className="display-skills">
       Final Skills

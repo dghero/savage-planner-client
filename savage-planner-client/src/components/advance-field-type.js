@@ -27,7 +27,7 @@ export function AdvanceFieldType(props){
 
 
 const mapStateToProps = state => ({
-  character: state.character
+
 });
 
 export default connect(mapStateToProps)(AdvanceFieldType);

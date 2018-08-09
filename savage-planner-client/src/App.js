@@ -34,10 +34,8 @@ class App extends Component {
   }
 }
 
-
 const mapStateToProps = state => ({
-  character: state.character,
-  edges: state.edges
+  character: state.character
 });
 
 export default connect(mapStateToProps)(App);

@@ -4,14 +4,6 @@ import './display-attributes.css';
 
 export function DisplayAttributes(props){
 
-  // const attributes = {
-  //   strength: 4,
-  //   vigor: 4,
-  //   agility: 4,
-  //   smarts: 4,
-  //   spirit: 4
-  // };
-
   let attrListItems;
 
   const attributes = props.character.stats.initial.attributes;
@@ -43,7 +35,6 @@ export function DisplayAttributes(props){
     );
   });
   
-
   return (
     <div className="display-attributes">
       Final Attrs
@@ -53,8 +44,6 @@ export function DisplayAttributes(props){
     </div>
   );
 }
-
-
 
 const mapStateToProps = state => ({
   character: state.character

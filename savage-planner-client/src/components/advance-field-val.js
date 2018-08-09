@@ -101,8 +101,7 @@ export function AdvanceFieldVal(props){
 
 
 const mapStateToProps = state => ({
-  character: state.character,
-  edges: state.edges
+  
 });
 
 export default connect(mapStateToProps)(AdvanceFieldVal);
