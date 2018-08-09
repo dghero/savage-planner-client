@@ -21,9 +21,9 @@ class App extends Component {
     if(Object.keys(this.props.character.stats).length > 0 ){
       displayCharacter =
         [
-          <DisplayStats />,
-          <StarterStats />,
-          <AdvanceList />
+          <DisplayStats key={'display'}/>,
+          <StarterStats key={'starter'}/>,
+          <AdvanceList key={'advances'}/>
         ];
     }
     return (

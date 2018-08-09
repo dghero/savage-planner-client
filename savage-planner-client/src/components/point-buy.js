@@ -1,10 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { totalmem } from 'os';
 
 export function PointBuy(props){
-
-  
 
   const attrPointCost = 
     Object.keys(props.character.stats.initial.attributes)

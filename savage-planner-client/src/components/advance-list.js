@@ -14,7 +14,7 @@ export function AdvanceList(props){
     for(let i = 0; i<= 75/5-1; i++){
       const currentAdvance = advances[i];
       const currentItem = (
-        <AdvanceListItem currentAdvance={currentAdvance} />
+        <AdvanceListItem key={`adv-${currentAdvance.xp}`} currentAdvance={currentAdvance} />
       );
 
       advanceListItems.push(currentItem);

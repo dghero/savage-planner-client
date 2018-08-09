@@ -12,12 +12,12 @@ const getAttrAbbrev = function(attr){
   }
 };
 
-export function AdvanceSkillOptions(props){
+export function AdvanceOptionsSkill(props){
   const skills = props.character.stats.initial.skills;
   const skillKeys = Object.keys(skills);
 
   const skillOptions = skillKeys.map(skill =>(
-    <option value={skill} key={`${props.key}-${skill}`}>
+    <option value={skill} key={`${skill}`}>
       {skill.charAt(0).toUpperCase() + skill.substring(1)}
       ({getAttrAbbrev(skills[skill].attr)})
     </option>
@@ -33,4 +33,4 @@ const mapStateToProps = state => ({
   character: state.character
 });
 
-export default connect(mapStateToProps)(AdvanceSkillOptions);
+export default connect(mapStateToProps)(AdvanceOptionsSkill);
