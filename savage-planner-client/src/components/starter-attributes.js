@@ -23,20 +23,19 @@ export function StarterAttribues(props){
 
   let attrListItems;
 
-  if(Object.keys(props.character.stats).length > 0 ){
-    const attributes = props.character.stats.initial.attributes;
-    const attrKeys = Object.keys(attributes);
+  const attributes = props.character.stats.initial.attributes;
+  const attrKeys = Object.keys(attributes);
 
-    attrListItems = attrKeys.map(attr =>{
-      const attrName = attr.charAt(0).toUpperCase() + attr.substring(1);
-      const attrVal = attributes[attr];
-      return (
-        <li key={`final-${attr}`}>
-          {attrName}: {generateDropdown(attr, attrVal)}
-        </li>
-      );
-    });
-}
+  attrListItems = attrKeys.map(attr =>{
+    const attrName = attr.charAt(0).toUpperCase() + attr.substring(1);
+    const attrVal = attributes[attr];
+    return (
+      <li key={`final-${attr}`}>
+        {attrName}: {generateDropdown(attr, attrVal)}
+      </li>
+    );
+  });
+
   return (
     <div className="starter-attributes">
       Starter Attributes

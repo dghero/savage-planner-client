@@ -16,11 +16,19 @@ class App extends Component {
   }
 
   render() {
+
+    let displayCharacter;
+    if(Object.keys(this.props.character.stats).length > 0 ){
+      displayCharacter =
+        [
+          <DisplayStats />,
+          <StarterStats />,
+          <AdvanceList />
+        ];
+    }
     return (
       <div className="App">
-        <DisplayStats />
-        <StarterStats />
-        <AdvanceList />
+        {displayCharacter}
       </div>
     );
   }

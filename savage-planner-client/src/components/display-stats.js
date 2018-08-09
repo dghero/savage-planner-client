@@ -4,26 +4,13 @@ import DisplayAttributes from './display-attributes';
 import DisplaySkills from './display-skills';
 import DisplayXpDropdown from './display-xp-dropdown';
 
-export function DisplayStats(props){
-
-  let display;
-  if(Object.keys(props.character.stats).length > 0 ){
-    display = 
-      [<DisplayAttributes />,
-        <DisplaySkills />,
-        <DisplayXpDropdown />];
-  }
+export default function DisplayStats(props){
 
   return (
     <div className="display-stats">
-      {display}
+      <DisplayAttributes />
+      <DisplaySkills />
+      <DisplayXpDropdown />
     </div> 
   );
 }
-
-const mapStateToProps = state => ({
-  character: state.character
-});
-
-export default connect(mapStateToProps)(DisplayStats);
-
