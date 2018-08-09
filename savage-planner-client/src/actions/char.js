@@ -99,7 +99,10 @@ export const updateAdvanceValues = (xp, advType, val, val2, edgeId) => dispatch 
   };
 
   switch(advType){
-    case 'edge': updateObj.advance.edgeId = edgeId; break;
+    case 'edge': 
+      if(edgeId === 'none') updateObj.advance.edgeId = null;
+      else updateObj.advance.edgeId = edgeId; 
+      break;
     case 'attr': updateObj.advance.val = val; break;
     case 'newskill': updateObj.advance.val = val; break;
     case '1skill': updateObj.advance.val = val; break;

@@ -17,8 +17,8 @@ export function AdvanceFieldVal(props){
   // );
 
   const noneOption = (<option value='none' key='none'>Select...</option>);
-
   const currAdv = props.currAdv;
+  let edgeTarget;
 
   switch(currAdv.advType){
     case 'attr':
@@ -38,9 +38,12 @@ export function AdvanceFieldVal(props){
       break;
     
     case 'edge':
+      console.log(currAdv);
+      edgeTarget = (currAdv.edgeId  ? currAdv.edgeId.id : 'none');
+      console.log('edgeTarget: ', edgeTarget);
       valueHtml = (
         <div className="advance-field--value">
-          Val: <select defaultValue={currAdv.edgeId} onChange={e =>{
+          Val: <select defaultValue={edgeTarget} onChange={e =>{
             props.dispatch(updateAdvanceValues(currAdv.xp, currAdv.advType, null, null, e.target.value));
           }} >
             <AdvanceOptionsEdges />
