@@ -97,12 +97,12 @@ export const updateAdvanceValues = (xp, advType, val, val2, edgeId) => dispatch 
     val2: null,
     edgeId: null
   };
+  if(val === 'none') val = null;
+  if(val2 === 'none') val2 = null;
+  if(edgeId === 'none') edgeId = null;
 
   switch(advType){
-    case 'edge': 
-      if(edgeId === 'none') updateObj.advance.edgeId = null;
-      else updateObj.advance.edgeId = edgeId; 
-      break;
+    case 'edge': updateObj.advance.edgeId = edgeId; break;
     case 'attr': updateObj.advance.val = val; break;
     case 'newskill': updateObj.advance.val = val; break;
     case '1skill': updateObj.advance.val = val; break;
@@ -128,8 +128,6 @@ export const updateAdvanceValues = (xp, advType, val, val2, edgeId) => dispatch 
   })
   .then(res =>{
     const newEdge = res.advances[(xp/5)-1].edgeId;
-    console.log('New Edge: ', newEdge); 
-    console.log('updateAdvanceValues: ', xp, advType, val, val2, newEdge);
     dispatch(updateStateAdvanceValues(xp, advType, val, val2, newEdge));
   })
   .catch(err =>{
