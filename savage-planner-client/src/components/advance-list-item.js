@@ -6,18 +6,41 @@ import AdvanceFieldVal from './advance-field-val';
 
 export function AdvanceListItem(props){
 
-  const currAdv = props.currentAdvance;
-
   let invalidRequirement;
-
+  const currAdv = props.currentAdvance;
   const prevAdvs = props.character.advances.filter(adv => adv.xp < currAdv.xp);
 
-  // console.log(prevAdvs);
+  const initSkills = props.character.initial.skills;
+  const initAttrs = props.character.initial.attributes;
+  const skillKeys = Object.keys(initSkills).sort();
+  const attrKeys = Object.keys(initAttrs);
+
+  const prevStats = {skills:{}, attrs:{}};
+
+  //Get stats before current advance
+  skillKeys.forEach(key =>prevStats.skills[key] = initSkills[key].val);
+  attrKeys.forEach(key => prevStats.attrs[key] = initAttrs[key]);
+  
+  props.character.advances.forEach(advance =>{
+    if(advance.xp < currAdv.xp){
+      switch(advance.advType){
+        case 'attr': prevStats.attrs[advance.val] += 2; break;
+        case 'newskill': prevStats.skills[advance.val] += 4; break;
+        case '1skill': prevStats.skills[advance.val] += 2; break;
+        case '2skills':
+              prevStats.skills[advance.val] +=2;
+              prevStats.skills[advance.val2] +=2;
+              break;
+        default:
+      }
+    }
+  });
+
+  console.log('final ', currAdv.xp, prevStats);
 
   let max;
-  let key;
-  let attr;
-  let count; //can be used for many different things
+  let count;
+  let attrKey;
 
   switch(currAdv.advType){
     case 'edge':
@@ -32,40 +55,15 @@ export function AdvanceListItem(props){
       break;
 
     case 'newskill':
-      if(currAdv.val){
-        count = prevAdvs
-          .filter(adv =>(  
-              currAdv.val === adv.val
-            ||currAdv.val === adv.val2))
-          .length;
-
-        if(count > 0 || props.character.initial.skills[currAdv.val].val > 0)
-          invalidRequirement = 'Skill not at d0';
-      }
+      if(prevStats.skills[currAdv.val] > 0)
+        invalidRequirement = 'Skill not at d0';
       break;
 
     case '1skill':
       if(currAdv.val){
-        key = props.character.initial.skills[currAdv.val].attr;
-        count = props.character.initial.skills[currAdv.val].val;
-        attr = props.character.initial.attributes[key];
-
-        prevAdvs.forEach(adv =>{
-          if(adv.advType === 'attr' && adv.val === key)
-            attr += 2;          
-          if(adv.advType === 'newskill' && adv.val === currAdv.val)
-            count += 4;
-          if(adv.advType === '1skill' || adv.advType === '2skills'){
-            if(adv.val === currAdv.val)
-              count +=2;
-            if(adv.val2 === currAdv.val)
-              count +=2;
-          }
-        });
-
-        if(count < attr){
+        attrKey = initSkills[currAdv.val].attr;
+        if(prevStats.skills[currAdv.val] < prevStats.attrs[attrKey])
           invalidRequirement = 'Skill below associated attribute';
-        }
       }
       break;
 
