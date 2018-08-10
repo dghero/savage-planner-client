@@ -5,8 +5,6 @@ import AdvanceFieldType from './advance-field-type';
 import AdvanceFieldVal from './advance-field-val';
 
 export function AdvanceListItem(props){
-
-  let invalidRequirement;
   const currAdv = props.currentAdvance;
   const prevAdvs = props.character.advances.filter(adv => adv.xp < currAdv.xp);
 
@@ -40,18 +38,23 @@ export function AdvanceListItem(props){
     }
   });
 
-  console.log('final ', currAdv.xp, prevStats);
+  // console.log('final ', currAdv.xp, prevStats);
 
+  let invalidRequirement = [];
   let max;
   let count;
   let attrKey;
   let edgeName;
   let skillName;
+  let attrName;
 
   switch(currAdv.advType){
     case 'edge':
-      invalidRequirement = [];
       if(currAdv.edgeId){
+        if(prevStats.edges.map(edge=>edge.id).includes(currAdv.edgeId.id)){
+          invalidRequirement.push('Duplicate edge');
+        }
+
         if(currAdv.edgeId.req.xp > currAdv.xp){
           invalidRequirement.push(`Minimum XP: ${currAdv.edgeId.req.xp}`);
         }
@@ -66,7 +69,6 @@ export function AdvanceListItem(props){
             });
         }
         if(currAdv.edgeId.req.skills.length > 0){
-          console.log('skill requirements!', currAdv.edgeId.req.skills);
           currAdv.edgeId.req.skills
             .forEach(reqSkill=>{
               if(prevStats.skills[reqSkill.skill] < reqSkill.val){
@@ -76,29 +78,34 @@ export function AdvanceListItem(props){
             });
         }
         if(currAdv.edgeId.req.attrs.length > 0){
-          console.log('attr requirements!', currAdv.edgeId.req.attrs);
+          currAdv.edgeId.req.attrs
+            .forEach(reqAttr=>{
+              if(prevStats.attrs[reqAttr.attr] < reqAttr.val){
+                attrName = reqAttr.attr.charAt(0).toUpperCase() + reqAttr.attr.substring(1);
+                invalidRequirement.push(`Min ${attrName}: ${reqAttr.val}`);
+              }
+            });
         }
       }
-      invalidRequirement = invalidRequirement.join(', ');
       break;
     
     case 'attr':
       count = prevAdvs.filter(adv => adv.advType === 'attr').length;
       max = Math.floor( (currAdv.xp)/20 );
       if(count > max)
-        invalidRequirement = 'Only one +attr per rank';
+        invalidRequirement.push('Only one +attr per rank');
       break;
 
     case 'newskill':
       if(prevStats.skills[currAdv.val] > 0)
-        invalidRequirement = 'Skill not at d0';
+        invalidRequirement.push('Skill not at d0');
       break;
 
     case '1skill':
       if(currAdv.val){
         attrKey = initSkills[currAdv.val].attr;
         if(prevStats.skills[currAdv.val] < prevStats.attrs[attrKey])
-          invalidRequirement = 'Skill below associated attribute';
+          invalidRequirement.push('Skill below associated attribute');
       }
       break;
 
@@ -117,12 +124,13 @@ export function AdvanceListItem(props){
           invalidRequirement.push('Skill 2 not below associated attribute');
       }
 
-      invalidRequirement = invalidRequirement.join(', ');
       // if(invalidRequirement.length > 0)
       //   invalidRequirement = invalidRequirement.map(msgString => (<p>{msgString}</p> ));
       break;
 
   }
+
+  invalidRequirement = invalidRequirement.join(', ');
 
   return(
     <li>
