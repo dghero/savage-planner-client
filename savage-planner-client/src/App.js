@@ -18,8 +18,8 @@ class App extends Component {
   render() {
 
     let displayCharacter;
-    console.log(this.props.character);
-    if(Object.keys(this.props.character.stats).length > 0 ){
+    
+    if(this.props.character.stats){
       displayCharacter =
         [
           <DisplayStats key={'display'}/>,
