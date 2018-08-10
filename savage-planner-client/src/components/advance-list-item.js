@@ -15,7 +15,7 @@ export function AdvanceListItem(props){
   const skillKeys = Object.keys(initSkills).sort();
   const attrKeys = Object.keys(initAttrs);
 
-  const prevStats = {skills:{}, attrs:{}};
+  const prevStats = {skills:{}, attrs:{}, edges:[]};
 
   //Get stats before current advance
   skillKeys.forEach(key =>prevStats.skills[key] = initSkills[key].val);
@@ -24,6 +24,10 @@ export function AdvanceListItem(props){
   props.character.advances.forEach(advance =>{
     if(advance.xp < currAdv.xp){
       switch(advance.advType){
+        case 'edge': 
+              if(advance.edgeId)
+                prevStats.edges.push(advance.edgeId);
+              break;
         case 'attr': prevStats.attrs[advance.val] += 2; break;
         case 'newskill': prevStats.skills[advance.val] += 4; break;
         case '1skill': prevStats.skills[advance.val] += 2; break;
@@ -41,10 +45,33 @@ export function AdvanceListItem(props){
   let max;
   let count;
   let attrKey;
+  let reqEdgeIdList;
+  let edgeName;
 
   switch(currAdv.advType){
     case 'edge':
-
+      invalidRequirement = [];
+      if(currAdv.edgeId){
+        if(currAdv.edgeId.req.xp > currAdv.xp){
+          invalidRequirement.push(`Minimum XP: ${currAdv.edgeId.req.xp}`);
+        }
+        if(currAdv.edgeId.req.edges.length > 0){
+          reqEdgeIdList = currAdv.edgeId.req.edges.map(reqEdge=>reqEdge.edgeId);
+          reqEdgeIdList.forEach(reqEdge =>{
+            if(!prevStats.edges.map(edge=>edge.id).includes(reqEdge)){
+              edgeName = props.edges.find(edge=>edge.id===reqEdge).name;
+              invalidRequirement.push(`Missing edge: ${edgeName}`);
+            }
+          });
+        }
+        if(currAdv.edgeId.req.skills.length > 0){
+          console.log('skill requirements!', currAdv.edgeId.req.skills);
+        }
+        if(currAdv.edgeId.req.attrs.length > 0){
+          console.log('attr requirements!', currAdv.edgeId.req.attrs);
+        }
+      }
+      invalidRequirement = invalidRequirement.join(', ');
       break;
     
     case 'attr':
@@ -68,7 +95,23 @@ export function AdvanceListItem(props){
       break;
 
     case '2skills':
+      invalidRequirement = [];
+      if(currAdv.val === currAdv.val2 && currAdv.val !== null)
+        invalidRequirement.push('Must choose two different skills');
+      if(currAdv.val){
+        attrKey = initSkills[currAdv.val].attr;
+        if(prevStats.skills[currAdv.val] >= prevStats.attrs[attrKey])
+          invalidRequirement.push('Skill 1 not below associated attribute');
+      }
+      if(currAdv.val2){
+        attrKey = initSkills[currAdv.val2].attr;
+        if(prevStats.skills[currAdv.val2] >= prevStats.attrs[attrKey])
+          invalidRequirement.push('Skill 2 not below associated attribute');
+      }
 
+      invalidRequirement = invalidRequirement.join(', ');
+      // if(invalidRequirement.length > 0)
+      //   invalidRequirement = invalidRequirement.map(msgString => (<p>{msgString}</p> ));
       break;
 
   }
@@ -86,7 +129,8 @@ export function AdvanceListItem(props){
 }
 
 const mapStateToProps = state => ({
-  character: state.character.stats
+  character: state.character.stats,
+  edges: state.edges.list
 });
 
 export default connect(mapStateToProps)(AdvanceListItem);
