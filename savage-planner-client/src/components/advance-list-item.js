@@ -45,8 +45,8 @@ export function AdvanceListItem(props){
   let max;
   let count;
   let attrKey;
-  let reqEdgeIdList;
   let edgeName;
+  let skillName;
 
   switch(currAdv.advType){
     case 'edge':
@@ -56,16 +56,24 @@ export function AdvanceListItem(props){
           invalidRequirement.push(`Minimum XP: ${currAdv.edgeId.req.xp}`);
         }
         if(currAdv.edgeId.req.edges.length > 0){
-          reqEdgeIdList = currAdv.edgeId.req.edges.map(reqEdge=>reqEdge.edgeId);
-          reqEdgeIdList.forEach(reqEdge =>{
-            if(!prevStats.edges.map(edge=>edge.id).includes(reqEdge)){
-              edgeName = props.edges.find(edge=>edge.id===reqEdge).name;
-              invalidRequirement.push(`Missing edge: ${edgeName}`);
-            }
-          });
+          currAdv.edgeId.req.edges
+            .map(reqEdge=>reqEdge.edgeId) //filter out the mongodb _id for array.... I think
+            .forEach(reqEdge =>{
+              if(!prevStats.edges.map(edge=>edge.id).includes(reqEdge)){
+                edgeName = props.edges.find(edge=>edge.id===reqEdge).name;
+                invalidRequirement.push(`Missing edge: ${edgeName}`);
+              }
+            });
         }
         if(currAdv.edgeId.req.skills.length > 0){
           console.log('skill requirements!', currAdv.edgeId.req.skills);
+          currAdv.edgeId.req.skills
+            .forEach(reqSkill=>{
+              if(prevStats.skills[reqSkill.skill] < reqSkill.val){
+                skillName = reqSkill.skill.charAt(0).toUpperCase() + reqSkill.skill.substring(1);
+                invalidRequirement.push(`Min ${skillName}: ${reqSkill.val}`);
+              }
+            });
         }
         if(currAdv.edgeId.req.attrs.length > 0){
           console.log('attr requirements!', currAdv.edgeId.req.attrs);
