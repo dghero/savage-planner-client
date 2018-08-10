@@ -18,15 +18,18 @@ class App extends Component {
   render() {
 
     let displayCharacter;
-    
+    console.log(this.props.character);
     if(this.props.character.stats){
-      displayCharacter =
-        [
-          <DisplayStats key={'display'}/>,
-          <StarterStats key={'starter'}/>,
-          <AdvanceList key={'advances'}/>
-        ];
+      if(Object.keys(this.props.character.stats).length > 0 ){
+        displayCharacter =
+          [
+            <DisplayStats key={'display'}/>,
+            <StarterStats key={'starter'}/>,
+            <AdvanceList key={'advances'}/>
+          ];
+      }
     }
+    
     return (
       <div className="App">
         {displayCharacter}
