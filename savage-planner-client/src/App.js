@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-d
 import Character from './components/character';
 import Landing from './components/landing';
 import Edges from './components/edges';
+import Rules from './components/rules';
 
 
 class App extends Component {
@@ -25,6 +26,7 @@ class App extends Component {
             <Route exact path="/index" component={Landing}/>
             <Route exact path="/character" component={Character}/>
             <Route exact path="/edges" component={Edges}/>
+            <Route exact path="/rules" component={Rules}/>
           </Switch>
         </Router>
       </div>

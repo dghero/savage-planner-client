@@ -127,7 +127,12 @@ export function AdvanceListItem(props){
       // if(invalidRequirement.length > 0)
       //   invalidRequirement = invalidRequirement.map(msgString => (<p>{msgString}</p> ));
       break;
-
+    
+    case 'none': 
+      break;
+    default:
+      invalidRequirement.push('Unknown Advance');
+      
   }
 
   invalidRequirement = invalidRequirement.join(', ');

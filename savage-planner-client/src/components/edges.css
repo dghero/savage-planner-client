@@ -1,0 +1,29 @@
+/* .display-skills{
+  display: inline-block;
+  border: 1px solid black;
+  width: auto;
+  margin: auto;
+  text-align: left;
+} */
+
+.edges ul{
+  list-style-type: none;
+  padding: 0;
+}
+
+.edge-item{
+  margin: auto;
+  margin-bottom: 20px;
+  width: 400px;
+  padding: 10px;
+  border: solid black 1px;
+  text-align: left;
+}
+
+.edge-item h3{
+  margin-top: 0;
+}
+
+.edge-item p{
+  margin-bottom: 0;
+}

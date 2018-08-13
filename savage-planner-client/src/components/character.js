@@ -30,10 +30,12 @@ class Character extends Component {
     }
     
     return (
-      <div className="character">
-        <h2>Character Builder</h2>
-        {displayCharacter}
-      </div>
+      <main>
+        <div className="character">
+          <h2>Character Builder</h2>
+          {displayCharacter}
+        </div>
+      </main>
     );
   }
 }

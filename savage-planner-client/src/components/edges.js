@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './edges.css';
 
 import {connect} from 'react-redux';
 import {fetchEdges} from '../actions/edges';
@@ -19,12 +20,14 @@ class Edges extends Component {
     ));
     
     return (
-      <div className="edges">
-        <h2>Edges</h2>
-        <ul>
-          {formattedEdges}
-        </ul>
-      </div>
+      <main>
+        <div className="edges">
+          <h2>Edges</h2>
+          <ul>
+            {formattedEdges}
+          </ul>
+        </div>
+      </main>
     );
   }
 }
