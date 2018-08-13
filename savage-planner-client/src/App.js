@@ -1,38 +1,32 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import DisplayStats from './components/display-stats';
-import StarterStats from './components/starter-stats';
-import AdvanceList from './components/advance-list';
-
 import {connect} from 'react-redux';
-import {fetchCharacter} from './actions/char';
-import {fetchEdges} from './actions/edges';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+
+import Character from './components/character';
+import Landing from './components/landing';
+import Edges from './components/edges';
+
 
 class App extends Component {
   componentDidMount(prevProps){
-    this.props.dispatch(fetchEdges());
-    this.props.dispatch(fetchCharacter('5b64b162560e648424b32a61'));
+    // this.props.dispatch(fetchEdges());
+    // this.props.dispatch(fetchCharacter('5b64b162560e648424b32a61'));
   }
 
   render() {
-
-    let displayCharacter;
-    console.log(this.props.character);
-    if(this.props.character.stats){
-      if(Object.keys(this.props.character.stats).length > 0 ){
-        displayCharacter =
-          [
-            <DisplayStats key={'display'}/>,
-            <StarterStats key={'starter'}/>,
-            <AdvanceList key={'advances'}/>
-          ];
-      }
-    }
     
     return (
       <div className="App">
-        {displayCharacter}
+        <Router>
+          <Switch>
+            <Route exact path="/" render={()=>(<Redirect to="/index"/>)} />
+            <Route exact path="/index" component={Landing}/>
+            <Route exact path="/character" component={Character}/>
+            <Route exact path="/edges" component={Edges}/>
+          </Switch>
+        </Router>
       </div>
     );
   }
