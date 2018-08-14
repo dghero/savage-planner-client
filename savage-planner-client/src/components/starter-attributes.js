@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import './starter-attributes.css';
 
 import {updateStarterAttr} from '../actions/char';
 // import StarterAttributeDropdown from './starter-attribute-dropdown'
@@ -31,14 +30,15 @@ export function StarterAttribues(props){
     const attrVal = attributes[attr];
     return (
       <li key={`final-${attr}`}>
-        {attrName}: {generateDropdown(attr, attrVal)}
+        <span className="stat-name starter-attrs--name">{attrName}:</span> 
+        <span className="stat-value starter-attrs--value">{generateDropdown(attr, attrVal)}</span>
       </li>
     );
   });
 
   return (
-    <div className="starter-attributes">
-      Starter Attributes
+    <div className="statbox starter-attributes">
+      <h3>Starter Attributes</h3>
       <ul>
         {attrListItems}
       </ul>

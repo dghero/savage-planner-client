@@ -35,55 +35,6 @@
 }
 
 
-.statbox{
-  display: inline-block;
-  border: 1px solid black;
-  width: auto;
-  margin: auto;
-  /* padding: 0 30px 10px 30px; */
-  text-align: left;
-}
-
-.statbox h3{
-  margin-top: 0;
-}
-
-.statbox ul{
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-
-  /* -moz-column-count: 2;
-  -moz-column-gap: 2px;
-  -webkit-column-count: 2;
-  -webkit-column-gap: 2px;
-  column-count: 2;
-  column-gap: 2px; */
-}
-
-.statbox ul li{
-  display: grid;
-  grid-template-columns: 80% auto;
-  grid-template-rows: auto auto;
-  grid-template-areas: "name value";
-  grid-gap: 5px;
-}
-
-span.stat-name{
-  /* display: inline-block; */
-  grid-area: name;
-  text-align: right;
-  border: 1px solid darkblue;
-  color: blue;
-}
-
-span.stat-value{
-  /* display: inline-block; */
-  grid-area: value;
-  border: 1px solid darkred;
-  color: red;
-}
-
 
 /* 
 .display-skills--value{

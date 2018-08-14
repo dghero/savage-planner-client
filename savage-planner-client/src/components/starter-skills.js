@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import './starter-skills.css';
 
 import {updateStarterSkill} from '../actions/char';
 
@@ -47,14 +46,15 @@ export function StarterSkills(props){
     
     return (
       <li key={`final-${skill}`}>
-        {skillName} ({linkedAttr}): {generateDropdown(skill, skillVal)}
+        <span className="stat-name starter-skills--name">{skillName} ({linkedAttr}):</span> 
+        <span className="stat-value starter-skills--value">{generateDropdown(skill, skillVal)}</span>
       </li>
     );
   });
   
   return (
-    <div className="starter-skills">
-      Starter Skills
+    <div className="statbox starter-skills">
+      <h3>Starter Skills</h3>
       <ul>
         {skillListItems}
       </ul>

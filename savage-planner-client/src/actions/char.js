@@ -4,6 +4,9 @@ import {API_BASE_URL} from '../config';
 export const fetchCharacter = id => dispatch =>{
   return fetch(`${API_BASE_URL}/api/characters/${id}`)
     .then(res =>{
+      if (!res.ok) {
+        return Promise.reject(res.statusText);
+      }
       return res.json();
     })
     .then(res =>{
@@ -144,7 +147,7 @@ export const fetchCharacterSuccess = character =>({
 
 export const FETCH_CHARACTER_ERROR = 'FETCH_CHARACTER_ERROR';
 export const fetchCharacterError = error =>({
-  type: FETCH_CHARACTER_SUCCESS,
+  type: FETCH_CHARACTER_ERROR,
   error
 });
 

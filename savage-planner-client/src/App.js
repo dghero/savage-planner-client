@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 
 import Navigation from './components/navigation';
-import Character from './components/character';
+import Characters from './components/characters';
 import Landing from './components/landing';
 import Edges from './components/edges';
 import Rules from './components/rules';
@@ -25,7 +25,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" render={()=>(<Redirect to="/index"/>)} />
             <Route exact path="/index" component={Landing}/>
-            <Route exact path="/character" component={Character}/>
+            <Route path="/character" component={Characters}/>
             <Route exact path="/edges" component={Edges}/>
             <Route exact path="/rules" component={Rules}/>
           </Switch>

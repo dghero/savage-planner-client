@@ -11,6 +11,7 @@ import{
 
 const initialState = {
   stats: {},
+  isLoaded: false,
   charError: null,
   maxXp: 75
 };
@@ -21,11 +22,12 @@ export function characterReducer(state=initialState, action){
   switch(action.type){
     case FETCH_CHARACTER_SUCCESS:
       return {...state,
+              isLoaded: true,
               stats: action.character};
 
     case FETCH_CHARACTER_ERROR:
       return {...state,
-              error: action.error};
+              charError: action.error};
 
     case SET_MAX_DISPLAY_XP:
         return{...state,

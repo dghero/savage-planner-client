@@ -1,53 +1,60 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 
-import Navigation from './navigation';
+import {fetchCharacter} from '../actions/char';
+import {fetchEdges} from '../actions/edges';
+
 import DisplayStats from './display-stats';
 import StarterStats from './starter-stats';
 import AdvanceList from './advance-list';
 
-import {connect} from 'react-redux';
-import {fetchCharacter} from '../actions/char';
-import {fetchEdges} from '../actions/edges';
-
-import './character.css';
-
-class Character extends Component {
+class Character extends Component{
+  constructor(props){
+    super(props);
+  }
   componentDidMount(prevProps){
     this.props.dispatch(fetchEdges());
-    this.props.dispatch(fetchCharacter('5b64b162560e648424b32a61'));
+    this.props.dispatch(fetchCharacter(this.props.charId));
   }
 
-  render() {
+  render(){
+    console.log(this.props.charId);
+    console.log(this.props.character);
 
     let displayCharacter;
-    console.log(this.props.character);
-    if(this.props.character.stats){
-      if(Object.keys(this.props.character.stats).length > 0 ){
-        displayCharacter =
-          [
-            <DisplayStats key={'display'}/>,
-            <StarterStats key={'starter'}/>,
-            <AdvanceList key={'advances'}/>
-          ];
-      }
+    let charErr;
+
+    if(this.props.character.isLoaded){
+      displayCharacter =
+        [
+          <DisplayStats key={'display'}/>,
+          <StarterStats key={'starter'}/>,
+          <AdvanceList key={'advances'}/>
+        ];
+    }else{
+      displayCharacter = this.props.character.charError;
     }
-    
-    return (
-      <div>
-        <Navigation currPage={'character'} />
-        <main>
-          <div className="character">
-            <h2>Character Builder</h2>
-            {displayCharacter}
-          </div>
-        </main>
+
+    return(
+      <div className="character">
+        <h2>Character Builder</h2>
+        {charErr}
+        {displayCharacter}
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  character: state.character
-});
+const mapStateToProps = (state, props) => {
+  const charId = props.match.params.charId;   
+  return {
+    character: state.character,
+    charId
+  };
+};
+
+// const mapStateToProps = state => ({
+//   character: state.character
+// });
 
 export default connect(mapStateToProps)(Character);

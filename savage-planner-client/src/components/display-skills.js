@@ -50,7 +50,8 @@ export function DisplaySkills(props){
 
     return (
       <li key={`final-${skill}`}>
-        <span className="stat-name display-skills--name">{skillName} ({linkedAttr}):</span> <span className="stat-value display-skills--value">d{skillVal}</span>
+        <span className="stat-name display-skills--name">{skillName} ({linkedAttr}):</span>
+        <span className="stat-value display-skills--value">d{skillVal}</span>
       </li>
     );
   });
