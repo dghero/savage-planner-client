@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Route, Switch} from 'react-router-dom';
 
 import Navigation from './navigation';
 import CharacterList from './character-list';
@@ -6,11 +7,6 @@ import Character from './character';
 
 import {connect} from 'react-redux';
 
-import Junk from './junk';
-
-import {Route, Switch} from 'react-router-dom';
-
-import './characters.css';
 
 class Characters extends Component {
 
@@ -20,8 +16,8 @@ class Characters extends Component {
         <Navigation currPage={'character'} />
         <main>
           <Switch>
-            <Route exact path="/character" component={CharacterList}/>
-            <Route exact path="/character/:charId" component={Character}/>
+            <Route exact path="/characters" component={CharacterList}/>
+            <Route exact path="/characters/:charId" component={Character}/>
           </Switch>
         </main>
       </div>

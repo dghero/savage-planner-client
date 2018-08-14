@@ -8,13 +8,16 @@ export const fetchEdgesSuccess = edges =>({
 
 export const FETCH_EDGES_ERROR = 'FETCH_EDGES_ERROR';
 export const fetchEdgesError = error =>({
-  type: FETCH_EDGES_SUCCESS,
+  type: FETCH_EDGES_ERROR,
   error
 });
 
 export const fetchEdges = () => dispatch =>{
   return fetch(`${API_BASE_URL}/api/edges`)
     .then(res =>{
+      if (!res.ok) {
+        return Promise.reject(res.statusText);
+      }
       return res.json();
     })
     .then(res =>{

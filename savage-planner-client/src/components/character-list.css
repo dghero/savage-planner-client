@@ -1,0 +1,41 @@
+.new-char{
+  width: auto;
+  
+  margin: 10px auto;
+  padding: 20px;
+}
+
+.character-list ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.character-list ul li{
+
+}
+
+.character-list ul li a{
+  /* text-decoration: none; */
+}
+
+/* unvisited link */
+.character-list li a:link {
+  color: #E8E8E8;
+}
+
+/* visited link */
+.character-list li a:visited {
+  color: #E8E8E8;
+}
+
+/* mouse over link */
+.character-list li a:hover {
+  color: #E8E8E8;
+}
+
+/* selected link */
+.character-list li a:active {
+  color: #E8E8E8;
+}
+

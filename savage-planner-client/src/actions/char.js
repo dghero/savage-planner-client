@@ -1,5 +1,39 @@
 import {API_BASE_URL} from '../config';
 
+export const fetchCharacterList = () => dispatch =>{
+  return fetch(`${API_BASE_URL}/api/characters`)
+    .then(res =>{
+      if(!res.ok){
+        return Promise.reject(res.statusText);
+      }
+      return res.json();
+    })
+    .then(res =>{
+      console.log('success! ', res);
+      return dispatch(fetchCharacterListSuccess(res));
+    })
+    .catch(err =>{
+      console.error( 'err: ', err);
+      //
+    });
+};
+
+export const newCharacter = () => dispatch =>{
+  return fetch(`${API_BASE_URL}/api/characters`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json'}
+  })
+  .then(res =>{
+    if (!res.ok) {
+      return Promise.reject(res.statusText);
+    }
+    // dispatch(newCharacterSuccess());
+  })
+  .catch(err =>{
+    console.error(err);
+    // dispatch(newCharacterError());
+  });
+};
 
 export const fetchCharacter = id => dispatch =>{
   return fetch(`${API_BASE_URL}/api/characters/${id}`)
@@ -18,11 +52,32 @@ export const fetchCharacter = id => dispatch =>{
     });
 };
 
+export const updateName = name => dispatch =>{
+  const updateObj = {name};
+
+  
+  return fetch(`${API_BASE_URL}/api/characters/5b64b162560e648424b32a61`, {
+    method: 'PUT',
+    headers: { 'content-type': 'application/json'},
+      body: JSON.stringify(updateObj)
+  })
+  .then(res =>{
+    if (!res.ok) {
+      return Promise.reject(res.statusText);
+    }
+    dispatch(updateStateName(name));
+  })
+  .catch(err =>{
+    console.error(err);
+    //TODO: Action/reducer for failed call
+  });
+};
+
 export const updateStarterAttr = (attr, val) => dispatch =>{
   const updateObj = {initial: { attributes: {} }};
   const valFormatted = parseInt(val, 10);
   updateObj.initial.attributes[attr] = valFormatted;
-
+  
   //TODO: get ID directly from store
   return fetch(`${API_BASE_URL}/api/characters/5b64b162560e648424b32a61`, {
       method: 'PUT',
@@ -139,6 +194,12 @@ export const updateAdvanceValues = (xp, advType, val, val2, edgeId) => dispatch 
   });
 };
 
+export const FETCH_CHARACTER_LIST_SUCCESS = 'FETCH_CHARACTER_LIST_SUCCESS';
+export const fetchCharacterListSuccess = list =>({
+  type: FETCH_CHARACTER_LIST_SUCCESS,
+  list
+});
+
 export const FETCH_CHARACTER_SUCCESS = 'FETCH_CHARACTER_SUCCESS';
 export const fetchCharacterSuccess = character =>({
   type: FETCH_CHARACTER_SUCCESS,
@@ -155,6 +216,12 @@ export const SET_MAX_DISPLAY_XP = 'SET_MAX_DISPLAY_XP';
 export const setMaxDisplayXp = maxXp =>({
   type: SET_MAX_DISPLAY_XP,
   maxXp
+});
+
+export const UPDATE_STATE_NAME = 'UPDATE_STATE_NAME';
+export const updateStateName = name =>({
+  type: UPDATE_STATE_NAME,
+  name
 });
 
 export const UPDATE_STATE_STARTER_ATTR = 'UPDATE_STATE_STARTER_ATTR';

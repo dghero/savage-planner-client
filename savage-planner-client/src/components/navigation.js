@@ -9,7 +9,7 @@ export default function Navigation(props){
       <nav>
         <ul className="menu-list">
           <li key="character" className="menu-list-item">
-            <a href="/character" className={page==='character' ? 'current-page' : null}>Character</a>
+            <a href="/characters" className={page==='character' ? 'current-page' : null}>Characters</a>
           </li>
           <li key="edges" className="menu-list-item">
             <a href="/edges" className={page==='edges' ? 'current-page' : null}>Edges</a>

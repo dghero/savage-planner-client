@@ -4,22 +4,21 @@ import {connect} from 'react-redux';
 import {fetchCharacter} from '../actions/char';
 import {fetchEdges} from '../actions/edges';
 
+import CharacterInfo from './character-info';
 import DisplayStats from './display-stats';
 import StarterStats from './starter-stats';
 import AdvanceList from './advance-list';
 
+import './character.css';
+
 class Character extends Component{
-  constructor(props){
-    super(props);
-  }
+  
   componentDidMount(prevProps){
     this.props.dispatch(fetchEdges());
     this.props.dispatch(fetchCharacter(this.props.charId));
   }
 
   render(){
-    console.log(this.props.charId);
-    console.log(this.props.character);
 
     let displayCharacter;
     let charErr;
@@ -27,6 +26,7 @@ class Character extends Component{
     if(this.props.character.isLoaded){
       displayCharacter =
         [
+          <CharacterInfo key={'info'}/>,
           <DisplayStats key={'display'}/>,
           <StarterStats key={'starter'}/>,
           <AdvanceList key={'advances'}/>
@@ -52,9 +52,5 @@ const mapStateToProps = (state, props) => {
     charId
   };
 };
-
-// const mapStateToProps = state => ({
-//   character: state.character
-// });
 
 export default connect(mapStateToProps)(Character);

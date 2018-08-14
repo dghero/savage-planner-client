@@ -2,16 +2,20 @@ import{
   FETCH_CHARACTER_SUCCESS,
   FETCH_CHARACTER_ERROR,
   SET_MAX_DISPLAY_XP,
+  UPDATE_STATE_NAME,
   UPDATE_STATE_STARTER_ATTR,
   UPDATE_STATE_STARTER_SKILL,
   UPDATE_STATE_ADVANCE_TYPE,
-  UPDATE_STATE_ADVANCE_VALUES
+  UPDATE_STATE_ADVANCE_VALUES,
+  FETCH_CHARACTER_LIST_SUCCESS
 
 } from '../actions/char';
 
 const initialState = {
   stats: {},
+  list: [],
   isLoaded: false,
+  charId: null,
   charError: null,
   maxXp: 75
 };
@@ -20,18 +24,29 @@ export function characterReducer(state=initialState, action){
   let newStats = {...state.stats};
   let xpIndex;
   switch(action.type){
+    case FETCH_CHARACTER_LIST_SUCCESS:
+      return {...state,
+              isLoaded: true,
+              list: action.list}
+
     case FETCH_CHARACTER_SUCCESS:
       return {...state,
               isLoaded: true,
-              stats: action.character};
+              stats: action.character,
+              charId: action.character.id};
 
     case FETCH_CHARACTER_ERROR:
       return {...state,
               charError: action.error};
 
     case SET_MAX_DISPLAY_XP:
-        return{...state,
+      return {...state,
               maxXp: action.maxXp}
+
+    case UPDATE_STATE_NAME:
+      newStats.name = action.name;
+      return {...state,
+              stats: newStats}
 
     case UPDATE_STATE_STARTER_ATTR:
       newStats.initial.attributes[action.attr] = action.val;
