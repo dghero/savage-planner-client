@@ -9,7 +9,6 @@ export const fetchCharacterList = () => dispatch =>{
       return res.json();
     })
     .then(res =>{
-      console.log('success! ', res);
       return dispatch(fetchCharacterListSuccess(res));
     })
     .catch(err =>{
@@ -52,11 +51,11 @@ export const fetchCharacter = id => dispatch =>{
     });
 };
 
-export const updateName = name => dispatch =>{
+export const updateName = name => (dispatch, getState) =>{
   const updateObj = {name};
+  const id = getState().character.charId;
 
-  
-  return fetch(`${API_BASE_URL}/api/characters/5b64b162560e648424b32a61`, {
+  return fetch(`${API_BASE_URL}/api/characters/${id}`, {
     method: 'PUT',
     headers: { 'content-type': 'application/json'},
       body: JSON.stringify(updateObj)
@@ -73,13 +72,14 @@ export const updateName = name => dispatch =>{
   });
 };
 
-export const updateStarterAttr = (attr, val) => dispatch =>{
+export const updateStarterAttr = (attr, val) => (dispatch, getState) =>{
   const updateObj = {initial: { attributes: {} }};
   const valFormatted = parseInt(val, 10);
   updateObj.initial.attributes[attr] = valFormatted;
+  const id = getState().character.charId;
   
   //TODO: get ID directly from store
-  return fetch(`${API_BASE_URL}/api/characters/5b64b162560e648424b32a61`, {
+  return fetch(`${API_BASE_URL}/api/characters/${id}`, {
       method: 'PUT',
       headers: { 'content-type': 'application/json'},
         body: JSON.stringify(updateObj)
@@ -96,13 +96,14 @@ export const updateStarterAttr = (attr, val) => dispatch =>{
     });
 };
 
-export const updateStarterSkill = (skill, val) => dispatch =>{
+export const updateStarterSkill = (skill, val) => (dispatch, getState) =>{
   const updateObj = {initial: { skills: {} }};
   const valFormatted = parseInt(val, 10);
   updateObj.initial.skills[skill] = {val: valFormatted};
+  const id = getState().character.charId;
 
   //TODO: get ID directly from store
-  return fetch(`${API_BASE_URL}/api/characters/5b64b162560e648424b32a61`, {
+  return fetch(`${API_BASE_URL}/api/characters/${id}`, {
       method: 'PUT',
       headers: { 'content-type': 'application/json'},
         body: JSON.stringify(updateObj)
@@ -119,8 +120,9 @@ export const updateStarterSkill = (skill, val) => dispatch =>{
     });
 };
 
-export const updateAdvanceType = (xp, advType) => dispatch =>{
+export const updateAdvanceType = (xp, advType) => (dispatch, getState) =>{
   const updateObj = {advance:{}};
+  const id = getState().character.charId;
   updateObj.advance = {
     xp,
     advType,
@@ -129,7 +131,7 @@ export const updateAdvanceType = (xp, advType) => dispatch =>{
     edgeId: null
   };
 
-  return fetch(`${API_BASE_URL}/api/characters/5b64b162560e648424b32a61`, {
+  return fetch(`${API_BASE_URL}/api/characters/${id}`, {
     method: 'PUT',
     headers: { 'content-type': 'application/json'},
       body: JSON.stringify(updateObj)
@@ -146,8 +148,10 @@ export const updateAdvanceType = (xp, advType) => dispatch =>{
   });
 };
 
-export const updateAdvanceValues = (xp, advType, val, val2, edgeId) => dispatch =>{
+export const updateAdvanceValues = (xp, advType, val, val2, edgeId) => 
+                                                (dispatch, getState) =>{
   const updateObj = {advance:{}};
+  const id = getState().character.charId;
   updateObj.advance = {
     xp,
     advType,
@@ -173,7 +177,7 @@ export const updateAdvanceValues = (xp, advType, val, val2, edgeId) => dispatch 
       //TODO: error something? Maybe?
   }
 
-  return fetch(`${API_BASE_URL}/api/characters/5b64b162560e648424b32a61`, {
+  return fetch(`${API_BASE_URL}/api/characters/${id}`, {
     method: 'PUT',
     headers: { 'content-type': 'application/json'},
       body: JSON.stringify(updateObj)

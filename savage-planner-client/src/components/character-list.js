@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 
 import {fetchCharacterList} from '../actions/char'; 
+import {newCharacter} from '../actions/char'; 
 
 import './character-list.css';
 
@@ -30,7 +31,9 @@ class CharacterList extends Component{
         {redirect}
         <h2>Characters</h2>
         <div className="new-char">
-          <button> 
+          <button onClick={() =>{
+            console.log('clicky');
+          }}> 
             New Character
           </button>
         </div>
