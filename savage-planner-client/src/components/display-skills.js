@@ -1,5 +1,4 @@
 import React from 'react';
-import './display-skills.css';
 import {connect} from 'react-redux';
 
 export function DisplaySkills(props){
@@ -51,14 +50,14 @@ export function DisplaySkills(props){
 
     return (
       <li key={`final-${skill}`}>
-        {skillName} ({linkedAttr}): <span className="display-skills--value">d{skillVal}</span>
+        <span className="stat-name display-skills--name">{skillName} ({linkedAttr}):</span> <span className="stat-value display-skills--value">d{skillVal}</span>
       </li>
     );
   });
   
   return (
-    <div className="display-skills">
-      Final Skills
+    <div className="statbox display-skills">
+      <h3>Final Skills</h3>
       <ul>
         {skillListItems}
       </ul>

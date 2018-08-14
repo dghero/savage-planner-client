@@ -4,6 +4,7 @@ import './App.css';
 import {connect} from 'react-redux';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 
+import Navigation from './components/navigation';
 import Character from './components/character';
 import Landing from './components/landing';
 import Edges from './components/edges';

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import Navigation from './navigation';
 import DisplayStats from './display-stats';
 import StarterStats from './starter-stats';
 import AdvanceList from './advance-list';
@@ -7,6 +8,8 @@ import AdvanceList from './advance-list';
 import {connect} from 'react-redux';
 import {fetchCharacter} from '../actions/char';
 import {fetchEdges} from '../actions/edges';
+
+import './character.css';
 
 class Character extends Component {
   componentDidMount(prevProps){
@@ -30,12 +33,15 @@ class Character extends Component {
     }
     
     return (
-      <main>
-        <div className="character">
-          <h2>Character Builder</h2>
-          {displayCharacter}
-        </div>
-      </main>
+      <div>
+        <Navigation currPage={'character'} />
+        <main>
+          <div className="character">
+            <h2>Character Builder</h2>
+            {displayCharacter}
+          </div>
+        </main>
+      </div>
     );
   }
 }

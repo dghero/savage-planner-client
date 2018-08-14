@@ -1,17 +1,10 @@
+body{
+  background: #52637A;
+}
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+  color: #E8E8E8;
 }
 
 .App-title {
@@ -22,7 +15,13 @@
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+select{
+  color: #E8E8E8;
+  border-radius: 3px;
+  background: #47566B;
+  /* border-color: #EEEEEE; */
+}
+
+select[disabled]{
+  color: rgb(147, 164, 180);
 }

@@ -4,6 +4,7 @@ import './edges.css';
 import {connect} from 'react-redux';
 import {fetchEdges} from '../actions/edges';
 
+import Navigation from './navigation';
 import EdgeItem from './edge-item';
 
 class Edges extends Component {
@@ -20,14 +21,17 @@ class Edges extends Component {
     ));
     
     return (
-      <main>
-        <div className="edges">
-          <h2>Edges</h2>
-          <ul>
-            {formattedEdges}
-          </ul>
-        </div>
-      </main>
+      <div>
+        <Navigation currPage={'edges'} />
+        <main>
+          <div className="edges">
+            <h2>Edges</h2>
+            <ul>
+              {formattedEdges}
+            </ul>
+          </div>
+        </main>
+      </div>
     );
   }
 }

@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import './display-attributes.css';
 
 export function DisplayAttributes(props){
 
@@ -30,14 +29,14 @@ export function DisplayAttributes(props){
 
     return (
       <li key={`final-${attr}`}>
-        {attrName}: d{attrVal}
+        <span className="stat-name display-attrs--name">{attrName}:</span> <span className="stat-value display-attrs--value">d{attrVal}</span>
       </li>
     );
   });
   
   return (
-    <div className="display-attributes">
-      Final Attrs
+    <div className="statbox display-attributes">
+      <h3>Final Attrs</h3>
       <ul>
         {attrListItems}
       </ul>

@@ -1,0 +1,45 @@
+.menu{
+  width: 100%;
+  background-color: #47566B;
+  /* padding: 15px; */
+  padding: 15px 0;
+}
+
+.menu-list{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.menu-list li{
+  display: inline;
+  margin: 5px;
+}
+
+.menu-list li a{
+  text-decoration: none;
+  font-size: 1.2em;
+}
+
+/* unvisited link */
+.menu-list li a:link {
+  color: #E8E8E8;
+}
+
+/* visited link */
+.menu-list li a:visited {
+  color: #E8E8E8;
+}
+
+/* mouse over link */
+.menu-list li a:hover {
+  color: #E8E8E8;
+}
+
+/* selected link */
+.menu-list li a:active {
+  color: #E8E8E8;
+}
+
+.menu-list li a.current-page{
+  color: rgb(147, 164, 180);
+}
