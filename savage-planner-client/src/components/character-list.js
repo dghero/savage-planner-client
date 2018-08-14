@@ -20,9 +20,10 @@ class CharacterList extends Component{
     ));
 
     let redirect;
-    if(this.props.newChar){
+    if(this.props.character.charId){
+      console.log('whaddup');
       redirect = (
-        <Redirect to={`/characters/${this.props.newChar}`} />
+        <Redirect to={`/characters/${this.props.charId}`} />
       );
     }
 
@@ -32,6 +33,7 @@ class CharacterList extends Component{
         <h2>Characters</h2>
         <div className="new-char">
           <button onClick={() =>{
+            this.props.dispatch(newCharacter());
             console.log('clicky');
           }}> 
             New Character

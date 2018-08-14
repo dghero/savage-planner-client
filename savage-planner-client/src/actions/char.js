@@ -26,11 +26,17 @@ export const newCharacter = () => dispatch =>{
     if (!res.ok) {
       return Promise.reject(res.statusText);
     }
-    // dispatch(newCharacterSuccess());
+    return res.json(); //Doesn't seem I can get location from header...
+  })
+  .then(res =>{
+    const id = res.id;
+    console.log('id!?: ', id)
+    dispatch(newCharacterSuccess(id));
+    console.log(res);
   })
   .catch(err =>{
     console.error(err);
-    // dispatch(newCharacterError());
+    dispatch(newCharacterError(err));
   });
 };
 
@@ -215,6 +221,19 @@ export const fetchCharacterError = error =>({
   type: FETCH_CHARACTER_ERROR,
   error
 });
+
+export const NEW_CHARACTER_SUCCESS = 'NEW_CHARACTER_SUCCESS';
+export const newCharacterSuccess = charId =>({
+  type: NEW_CHARACTER_SUCCESS,
+  charId
+});
+
+export const NEW_CHARACTER_ERROR = 'NEW_CHARACTER_ERROR';
+export const newCharacterError = error =>({
+  type: NEW_CHARACTER_ERROR,
+  error
+});
+
 
 export const SET_MAX_DISPLAY_XP = 'SET_MAX_DISPLAY_XP';
 export const setMaxDisplayXp = maxXp =>({

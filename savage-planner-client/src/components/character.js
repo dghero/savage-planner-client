@@ -23,7 +23,7 @@ class Character extends Component{
     let displayCharacter;
     let charErr;
 
-    if(this.props.character.isLoaded){
+    if(this.props.character.isStatsLoaded){
       displayCharacter =
         [
           <CharacterInfo key={'info'}/>,

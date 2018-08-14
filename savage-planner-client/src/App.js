@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import {connect} from 'react-redux';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 
 import Characters from './components/characters';
@@ -10,7 +9,7 @@ import Edges from './components/edges';
 import Rules from './components/rules';
 
 
-class App extends Component {
+export default class App extends Component {
   
   render() {  
     return (
@@ -28,9 +27,3 @@ class App extends Component {
     );
   }
 }
-
-const mapStateToProps = state => ({
-  character: state.character
-});
-
-export default connect(mapStateToProps)(App);
