@@ -42,7 +42,6 @@ export function characterReducer(state=initialState, action){
               charError: action.error};
     
     case NEW_CHARACTER_SUCCESS:
-      console.log('OH DANG', action.charId);
       return {...state,
               charId: action.charId}
 

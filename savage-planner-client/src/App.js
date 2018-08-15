@@ -17,7 +17,8 @@ export default class App extends Component {
         <Router>
           <Switch>
             <Route exact path="/" render={()=>(<Redirect to="/index"/>)} />
-            <Route exact path="/index" component={Landing}/>
+            <Route exact path="/index" render={()=>(<Redirect to="/characters"/>)} />
+            {/* <Route exact path="/index" component={Landing}/> */}
             <Route path="/characters" component={Characters}/>
             <Route exact path="/edges" component={Edges}/>
             <Route exact path="/rules" component={Rules}/>

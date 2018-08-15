@@ -4,6 +4,7 @@ import {Redirect} from 'react-router-dom';
 
 import {fetchCharacterList} from '../actions/char'; 
 import {newCharacter} from '../actions/char'; 
+import CharacterDeleteButton from './character-delete-button';
 
 import './character-list.css';
 
@@ -14,16 +15,18 @@ class CharacterList extends Component{
 
   render(){
     let charList = this.props.character.list.map(char =>(
-        <li key={char.id}><a href={`/characters/${char.id}`}>
-          {char.name ? char.name : 'Unnamed Character'}
-        </a></li>
+        <li key={char.id}>
+          <a href={`/characters/${char.id}`}>
+            {char.name ? char.name : 'Unnamed Character'}
+          </a>
+          <CharacterDeleteButton id={char.id} />
+          </li>
     ));
 
     let redirect;
     if(this.props.character.charId){
-      console.log('whaddup');
       redirect = (
-        <Redirect to={`/characters/${this.props.charId}`} />
+        <Redirect to={`/characters/${this.props.character.charId}`} />
       );
     }
 
@@ -34,7 +37,6 @@ class CharacterList extends Component{
         <div className="new-char">
           <button onClick={() =>{
             this.props.dispatch(newCharacter());
-            console.log('clicky');
           }}> 
             New Character
           </button>
@@ -49,7 +51,7 @@ class CharacterList extends Component{
 
 const mapStateToProps = state => { 
   return {
-    character: state.character,
+    character: state.character
   };
 };
 

@@ -29,16 +29,49 @@ export const newCharacter = () => dispatch =>{
     return res.json(); //Doesn't seem I can get location from header...
   })
   .then(res =>{
-    const id = res.id;
-    console.log('id!?: ', id)
-    dispatch(newCharacterSuccess(id));
-    console.log(res);
+    const charId = res.id;
+    dispatch(newCharacterSuccess(charId));
   })
   .catch(err =>{
     console.error(err);
     dispatch(newCharacterError(err));
   });
 };
+
+export const deleteCharacter = id => dispatch =>{
+  return fetch(`${API_BASE_URL}/api/characters/${id}`, {
+    method: 'DELETE',
+    headers: { 'content-type': 'application/json'}
+  })
+  .then(res =>{
+    if (!res.ok) {
+      return Promise.reject(res.statusText);
+    }
+  })
+  .catch(err =>{
+    console.error(err);
+    // dispatch(deleteCharacterError(err));
+  });
+};
+
+export const deleteCharacterReloadList = id => dispatch =>{
+  return fetch(`${API_BASE_URL}/api/characters/${id}`, {
+    method: 'DELETE',
+    headers: { 'content-type': 'application/json'}
+  })
+  .then(res =>{
+    if (!res.ok) {
+      return Promise.reject(res.statusText);
+    }
+    dispatch(fetchCharacterList());
+  })
+  .catch(err =>{
+    console.error(err);
+    // dispatch(deleteCharacterError(err));
+  });
+};
+
+
 
 export const fetchCharacter = id => dispatch =>{
   return fetch(`${API_BASE_URL}/api/characters/${id}`)
@@ -234,6 +267,10 @@ export const newCharacterError = error =>({
   error
 });
 
+export const DELETE_CHARACTER_SUCCESS = 'DELETE_CHARACTER_SUCCESS';
+export const deleteCharacterSuccess = () =>({
+  type: DELETE_CHARACTER_SUCCESS
+});
 
 export const SET_MAX_DISPLAY_XP = 'SET_MAX_DISPLAY_XP';
 export const setMaxDisplayXp = maxXp =>({
