@@ -1,7 +1,13 @@
 import {API_BASE_URL} from '../config';
 
-export const fetchCharacterList = () => dispatch =>{
-  return fetch(`${API_BASE_URL}/api/characters`)
+export const fetchCharacterList = () => (dispatch, getState) =>{
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/api/characters`, {
+    method: 'GET',
+    headers: { 'content-type': 'application/json',
+              Authorization: `Bearer ${authToken}`
+    }
+  })
     .then(res =>{
       if(!res.ok){
         return Promise.reject(res.statusText);
@@ -17,10 +23,13 @@ export const fetchCharacterList = () => dispatch =>{
     });
 };
 
-export const newCharacter = () => dispatch =>{
+export const newCharacter = () => (dispatch, getState) =>{
+  const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/api/characters`, {
     method: 'POST',
-    headers: { 'content-type': 'application/json'}
+    headers: { 'content-type': 'application/json',
+              Authorization: `Bearer ${authToken}`
+    }
   })
   .then(res =>{
     if (!res.ok) {
@@ -38,10 +47,13 @@ export const newCharacter = () => dispatch =>{
   });
 };
 
-export const deleteCharacter = id => dispatch =>{
+export const deleteCharacter = id => (dispatch, getState) =>{
+  const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/api/characters/${id}`, {
     method: 'DELETE',
-    headers: { 'content-type': 'application/json'}
+    headers: { 'content-type': 'application/json',
+              Authorization: `Bearer ${authToken}`
+    }
   })
   .then(res =>{
     if (!res.ok) {
@@ -54,10 +66,12 @@ export const deleteCharacter = id => dispatch =>{
   });
 };
 
-export const deleteCharacterReloadList = id => dispatch =>{
+export const deleteCharacterReloadList = id => (dispatch, getState) =>{
+  const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/api/characters/${id}`, {
     method: 'DELETE',
-    headers: { 'content-type': 'application/json'}
+    headers: { 'content-type': 'application/json',
+              Authorization: `Bearer ${authToken}`}
   })
   .then(res =>{
     if (!res.ok) {
@@ -73,31 +87,39 @@ export const deleteCharacterReloadList = id => dispatch =>{
 
 
 
-export const fetchCharacter = id => dispatch =>{
-  return fetch(`${API_BASE_URL}/api/characters/${id}`)
-    .then(res =>{
-      if (!res.ok) {
-        return Promise.reject(res.statusText);
-      }
-      return res.json();
-    })
-    .then(res =>{
-      return dispatch(fetchCharacterSuccess(res));
-    })
-    .catch(err =>{
-      console.error('err: ', err);
-      return dispatch(fetchCharacterError(err));
-    });
+export const fetchCharacter = id => (dispatch, getState) =>{
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/api/characters/${id}`, {
+    method: 'GET',
+    headers: { 'content-type': 'application/json',
+              Authorization: `Bearer ${authToken}`}
+  })
+  .then(res =>{
+    if (!res.ok) {
+      return Promise.reject(res.statusText);
+    }
+    return res.json();
+  })
+  .then(res =>{
+    return dispatch(fetchCharacterSuccess(res));
+  })
+  .catch(err =>{
+    console.error('err: ', err);
+    return dispatch(fetchCharacterError(err));
+  });
 };
 
 export const updateName = name => (dispatch, getState) =>{
   const updateObj = {name};
   const id = getState().character.charId;
+  const authToken = getState().auth.authToken;
 
+  updateCharRequest();
   return fetch(`${API_BASE_URL}/api/characters/${id}`, {
     method: 'PUT',
-    headers: { 'content-type': 'application/json'},
-      body: JSON.stringify(updateObj)
+    headers: { 'content-type': 'application/json',
+              Authorization: `Bearer ${authToken}`},
+    body: JSON.stringify(updateObj)
   })
   .then(res =>{
     if (!res.ok) {
@@ -116,12 +138,14 @@ export const updateStarterAttr = (attr, val) => (dispatch, getState) =>{
   const valFormatted = parseInt(val, 10);
   updateObj.initial.attributes[attr] = valFormatted;
   const id = getState().character.charId;
+  const authToken = getState().auth.authToken;
   
-  //TODO: get ID directly from store
+  updateCharRequest();
   return fetch(`${API_BASE_URL}/api/characters/${id}`, {
       method: 'PUT',
-      headers: { 'content-type': 'application/json'},
-        body: JSON.stringify(updateObj)
+      headers: { 'content-type': 'application/json',
+                Authorization: `Bearer ${authToken}`},
+      body: JSON.stringify(updateObj)
     })
     .then(res =>{
       if (!res.ok) {
@@ -131,7 +155,7 @@ export const updateStarterAttr = (attr, val) => (dispatch, getState) =>{
     })
     .catch(err =>{
       console.error(err);
-      //TODO: Action/reducer for failed call
+      dispatch(updateCharError(err));
     });
 };
 
@@ -140,12 +164,14 @@ export const updateStarterSkill = (skill, val) => (dispatch, getState) =>{
   const valFormatted = parseInt(val, 10);
   updateObj.initial.skills[skill] = {val: valFormatted};
   const id = getState().character.charId;
+  const authToken = getState().auth.authToken;
 
-  //TODO: get ID directly from store
+  updateCharRequest();
   return fetch(`${API_BASE_URL}/api/characters/${id}`, {
       method: 'PUT',
-      headers: { 'content-type': 'application/json'},
-        body: JSON.stringify(updateObj)
+      headers: { 'content-type': 'application/json',
+                Authorization: `Bearer ${authToken}`},
+      body: JSON.stringify(updateObj)
     })
     .then(res =>{
       if (!res.ok) {
@@ -155,13 +181,14 @@ export const updateStarterSkill = (skill, val) => (dispatch, getState) =>{
     })
     .catch(err =>{
       console.error(err);
-      //TODO: Action/reducer for failed call
+      dispatch(updateCharError(err));
     });
 };
 
 export const updateAdvanceType = (xp, advType) => (dispatch, getState) =>{
   const updateObj = {advance:{}};
   const id = getState().character.charId;
+  const authToken = getState().auth.authToken;
   updateObj.advance = {
     xp,
     advType,
@@ -170,10 +197,12 @@ export const updateAdvanceType = (xp, advType) => (dispatch, getState) =>{
     edgeId: null
   };
 
+  updateCharRequest();
   return fetch(`${API_BASE_URL}/api/characters/${id}`, {
     method: 'PUT',
-    headers: { 'content-type': 'application/json'},
-      body: JSON.stringify(updateObj)
+    headers: { 'content-type': 'application/json',
+              Authorization: `Bearer ${authToken}`},
+    body: JSON.stringify(updateObj)
   })
   .then(res =>{
     if (!res.ok) {
@@ -183,7 +212,7 @@ export const updateAdvanceType = (xp, advType) => (dispatch, getState) =>{
   })
   .catch(err =>{
     console.error(err);
-    //TODO: Action/reducer for failed call
+    dispatch(updateCharError(err));
   });
 };
 
@@ -191,6 +220,7 @@ export const updateAdvanceValues = (xp, advType, val, val2, edgeId) =>
                                                 (dispatch, getState) =>{
   const updateObj = {advance:{}};
   const id = getState().character.charId;
+  const authToken = getState().auth.authToken;
   updateObj.advance = {
     xp,
     advType,
@@ -216,10 +246,12 @@ export const updateAdvanceValues = (xp, advType, val, val2, edgeId) =>
       //TODO: error something? Maybe?
   }
 
+  updateCharRequest();
   return fetch(`${API_BASE_URL}/api/characters/${id}`, {
     method: 'PUT',
-    headers: { 'content-type': 'application/json'},
-      body: JSON.stringify(updateObj)
+    headers: { 'content-type': 'application/json',
+              Authorization: `Bearer ${authToken}`},
+    body: JSON.stringify(updateObj)
   })
   .then(res => {
     if (!res.ok) {
@@ -233,7 +265,7 @@ export const updateAdvanceValues = (xp, advType, val, val2, edgeId) =>
   })
   .catch(err =>{
     console.error(err);
-    //TODO: Action/reducer for failed call
+    dispatch(updateCharError(err));
   });
 };
 
@@ -315,5 +347,15 @@ export const updateStateAdvanceValues = (xp, advType, val, val2, edgeId) =>({
   edgeId
 });
 
+export const UPDATE_CHAR_REQUEST = 'UPDATE_CHAR_REQUEST';
+export const updateCharRequest = () =>({
+  type: UPDATE_CHAR_REQUEST
+});
+
+export const UPDATE_CHAR_ERROR = 'UPDATE_CHAR_ERROR';
+export const updateCharError = charError =>({
+  type: UPDATE_CHAR_ERROR,
+  charError
+});
 
 

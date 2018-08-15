@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import {Route, Switch} from 'react-router-dom';
 
 import Navigation from './navigation';
+import RequiresLogin from './requires-login';
 import CharacterList from './character-list';
 import Character from './character';
 
 import {connect} from 'react-redux';
+import requiresLogin from './requires-login';
 
 
 class Characters extends Component {
@@ -29,4 +31,4 @@ const mapStateToProps = state => ({
   character: state.character
 });
 
-export default connect(mapStateToProps)(Characters);
+export default requiresLogin()(connect(mapStateToProps)(Characters));

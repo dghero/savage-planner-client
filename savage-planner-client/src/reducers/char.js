@@ -8,7 +8,9 @@ import{
   UPDATE_STATE_ADVANCE_TYPE,
   UPDATE_STATE_ADVANCE_VALUES,
   FETCH_CHARACTER_LIST_SUCCESS,
-  NEW_CHARACTER_SUCCESS
+  NEW_CHARACTER_SUCCESS,
+  UPDATE_CHAR_REQUEST,
+  UPDATE_CHAR_ERROR,
 
 } from '../actions/char';
 
@@ -17,6 +19,7 @@ const initialState = {
   list: [],
   isStatsLoaded: false,
   isCharLoaded: false,
+  isUpdating: false,
   charId: null,
   charError: null,
   maxXp: 75
@@ -91,6 +94,15 @@ export function characterReducer(state=initialState, action){
       return {...state,
         stats: newStats
       }
+
+    case UPDATE_CHAR_REQUEST:
+      return {...state,
+        isUpdating: true}
+
+    case UPDATE_CHAR_ERROR:
+      return{...state,
+        isUpdating: false,
+        charError: action.charError}
 
     default:
       return state;

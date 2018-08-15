@@ -14,8 +14,8 @@ export default function Rules(props){
           <h1>Character Creation Rules</h1>
           <p>
             Welcome to the Savage Worlds Character Builder!
-            Savage Worlds is a Tabletop RPG system in the similar
-            vein of Dungeons and Dragons.
+            Savage Worlds is a Tabletop RPG system, similar
+            to Dungeons and Dragons.
             The full
             ruleset is too extensive to list here, but this
             page will provide the basic, bare bones rules 
@@ -29,14 +29,17 @@ export default function Rules(props){
             paper, and dice to keep track of character stats and the like. One person,
             called the Game Master (often shortened to GM) controls the world,
             describing scenes, controlling enemies, and acting out the roles of all the
-            people the player party will meet. The number of players can vary greatly,
+            people the player party will meet. The players will interact with the world,
+            describing what they want to do and say to accomplish their quests and goals.
+            The number of players can vary greatly,
             but a typical party size is around four to six players.
           </p>
           <p>
             Savage Worlds is played using traditional sets of gaming dice:
             4-sided, 6-sided, 8-sided, 10-sided, and 12-sided dice are
-            generally necessary to play. These are abbreviated to d4, d6
-            d8, d10, and d12 respectively.
+            standard for play. These are abbreviated to d4, d6
+            d8, d10, and d12 respectively. The d20, while an essential standard for 
+            many tabletop games like Dungeons and Dragons, is not often seen in Savage Worlds.
           </p>
           <p>
             When performing a difficult action,

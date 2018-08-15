@@ -17,7 +17,17 @@ export default function Navigation(props){
           <li key="rules" className="menu-list-item">
             <a href="/rules" className={page==='rules' ? 'current-page' : null}>Rules</a>
           </li>
+          <li key="login" className="menu-list-item">
+            <a href="/index" className={page==='login' ? 'current-page' : null}>Login/Register</a>
+          </li>
+          <li key="logout" className="menu-list-item">
+            <a href="/logout" className={page==='logout' ? 'current-page' : null}>Logout</a>
+          </li>
+
         </ul>
+        {/* <ul>
+          
+        </ul> */}
       </nav>
     </div>
   );
