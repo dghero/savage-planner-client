@@ -14,10 +14,12 @@ export default function Rules(props){
           <h1>Character Creation Rules</h1>
           <p>
             Welcome to the Savage Worlds Character Builder!
-            Savage Worlds is a Tabletop RPG system, of which the full
-            ruleset is too extensive to list here. However, this
-            rules page will provide the basic, bare bones rules 
-            game mechanics and character creation.
+            Savage Worlds is a Tabletop RPG system in the similar
+            vein of Dungeons and Dragons.
+            The full
+            ruleset is too extensive to list here, but this
+            page will provide the basic, bare bones rules 
+            for basic character creation.
           </p>
           
           <h2>General Information and Terminology</h2>

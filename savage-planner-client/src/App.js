@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import {connect} from 'react-redux';
 
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 
@@ -8,8 +8,9 @@ import Landing from './components/landing';
 import Edges from './components/edges';
 import Rules from './components/rules';
 
+import './App.css';
 
-export default class App extends Component {
+class App extends Component {
   
   render() {  
     return (
@@ -28,3 +29,13 @@ export default class App extends Component {
     );
   }
 }
+
+const mapStateToProps = state => { 
+  return {
+    character: state.character,
+    edges: state.edges,
+    auth: state.auth
+  };
+};
+
+export default connect(mapStateToProps)(App);
