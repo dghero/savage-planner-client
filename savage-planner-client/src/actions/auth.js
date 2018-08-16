@@ -48,13 +48,8 @@ const storeAuthInfo = (authToken, dispatch) => {
   saveAuthToken(authToken);
 };
 
-export const logout = () => (dispatch, getState) => {
-  let authToken = getState().auth.authToken;
-  console.log('throwaway: ', authToken);
+export const logout = () => (dispatch) => {
   dispatch(clearAuth());
-
-  authToken = getState().auth.authToken;
-  console.log('throwaway2: ', authToken);
   clearAuthToken();
 };
 
@@ -83,7 +78,7 @@ export const login = (username, password) => dispatch => {
                     code === 401
                       ? 'Incorrect username or password'
                       : 'Unable to login, please try again';
-        dispatch(authError(err));
+        dispatch(authError(message));
         // Could not authenticate
         // return Promise.reject('message');
       })

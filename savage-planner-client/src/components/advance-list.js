@@ -23,7 +23,7 @@ export function AdvanceList(props){
 
   return (
     <div className="advance-list">
-      Advances
+      <h2>Advances</h2>
       <ul>
         {advanceListItems}
       </ul>

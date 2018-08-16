@@ -2,8 +2,6 @@ body{
   background: #52637A;
 }
 
-
-
 .App {
   text-align: center;
   color: #E8E8E8;
@@ -18,7 +16,7 @@ body{
 }
 
 .button{
-  border: 1px solid rgba(191, 216, 227, .8);
+  border: 1px solid rgb(51, 61, 77);
   border-radius: 5px;
   color: #fff;
   background-color: rgb(27, 97, 128);

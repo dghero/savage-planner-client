@@ -3,12 +3,13 @@
   margin: auto;
   /* max-width: 800px; */
   max-width: 800px;
-  border: 1px solid lightgreen;
+  /* border: 1px solid lightgreen; */
 }
 
 .stat-section{
-  width: auto;
-  border: 1px solid orange;
+  display: inline-block;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgb(51, 61, 77);
 }
 
 .stat-section h2{
@@ -21,25 +22,16 @@
   width: 0;
 }
 
-.skills-box{
-  width: auto;
-}
-
-.attrs-box{
-  width: auto;
-}
-
-.skills-box ul{
-}
-
 .statbox{
   display: inline-block;
-  border: 1px solid black;
+  border: 1px solid rgb(51, 61, 77);
   margin: auto;
   padding: 5px 20px;
   background: #47566B;
   text-align: left;
 }
+
+
 
 .statbox h3{
   margin-top: 0;
@@ -49,29 +41,55 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(2, auto);
+  grid-template-columns: repeat(2, max-content max-content );
   grid-template-rows: repeat(auto-fill, auto);
-  grid-row-gap: 0;
-  grid-column-gap: .2em;
+  grid-row-gap: .5em;
+  grid-column-gap: 0;
+}
+
+@media (max-width: 500px){
+  .statbox-list{
+    grid-template-columns: repeat(2, auto );
+  }
+}
+
+.skills-box ul li{
+  display: inline-block;
+  border: 1px solid green;
+  width: 210px;
+}
+
+.skills-box ul li > *{
+  display: inline-block;
+}
+
+
+.stat{
+  border-bottom: 1px solid rgb(51, 61, 77);
 }
 
 .stat-name{
   text-align: right;
-  border: 1px solid darkblue;
-  /* color: blue; */
-  /* white-space: nowrap; */
 }
 
 .stat-value{
-  border: 1px solid darkred;
-  /* color: red; */
+  padding-left: 5px;
+  padding-right: 20px;
+  color: rgb(202, 227, 255);
 }
 
+.display-stats{
+  margin: 10px;
+}
 
 .character-info{
-  margin-bottom: 10px;
+  margin: 10px;
 }
 
 .point-buy{
-  text-align: right;
+  margin-top: 20px;
+}
+
+.display-edges{
+  margin: 10px;
 }

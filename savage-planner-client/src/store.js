@@ -4,7 +4,8 @@ import thunk from 'redux-thunk';
 
 //Local storage bits
 import {loadAuthToken} from './local-storage';
-import {setAuthToken, refreshAuthToken} from './actions/auth';
+// import {setAuthToken, refreshAuthToken} from './actions/auth';
+import {setAuthToken} from './actions/auth';
 
 //Reducers to combine
 import {characterReducer} from './reducers/char';

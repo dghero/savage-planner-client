@@ -49,10 +49,10 @@ export function DisplaySkills(props){
       skillVal = `12+${(skillVal-12)/2}`;
 
     return (
-      [<div key={`final-${skill}-name`} className="stat-name display-skills--name">
+      [<div key={`final-${skill}-name`} className="stat stat-name display-skills--name">
         {skillName} ({linkedAttr}) -
       </div>,
-      <div key={`final-${skill}-value`} className="stat-value display-skills--val">
+      <div key={`final-${skill}-value`} className="stat stat-value display-skills--val">
         d{skillVal}
       </div>]
     );

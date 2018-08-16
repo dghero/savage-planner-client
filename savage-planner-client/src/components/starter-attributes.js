@@ -29,10 +29,10 @@ export function StarterAttribues(props){
     const attrName = attr.charAt(0).toUpperCase() + attr.substring(1);
     const attrVal = attributes[attr];
     return (
-      [<div key={`final-${attr}-name`} className="stat-name starter-attrs--name">
+      [<div key={`final-${attr}-name`} className="stat stat-name starter-attrs--name">
         {attrName} -
       </div>,
-      <div key={`final-${attr}-value`} className="stat-value starter-attrs--value">
+      <div key={`final-${attr}-value`} className="stat stat-value starter-attrs--value">
         {generateDropdown(attr, attrVal)}
       </div>]
     );

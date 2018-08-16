@@ -28,10 +28,10 @@ export function DisplayAttributes(props){
       attrVal = `12+${(attrVal-12)/2}`;
 
     return (
-      [<div key={`final-${attr}-name`} className="stat-name display-attrs--name">
+      [<div key={`final-${attr}-name`} className="stat stat-name display-attrs--name">
         {attrName} -
       </div>,
-      <div key={`final-${attr}-value`} className="stat-value display-attrs--value">
+      <div key={`final-${attr}-value`} className="stat stat-value display-attrs--value">
         d{attrVal}
       </div>]
     );

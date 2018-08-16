@@ -8,9 +8,9 @@ export default function StarterStats(props){
   return (
     <div className="starter-stats stat-section">
       <h2>Starting Statistics</h2>
+      <PointBuy />   
       <StarterAttribues />
       <StarterSkills />
-      <PointBuy />
     </div>
   );
 }

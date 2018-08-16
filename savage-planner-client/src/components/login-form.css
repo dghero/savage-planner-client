@@ -5,8 +5,8 @@
 }
 
 .login {
-  background-color: rgba(191, 216, 227, .4);
-  border: 1px solid rgba(191, 216, 227, .8);
+  background-color: #62738A;
+  border: 2px solid rgb(51, 61, 77);
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
   padding: 10px;

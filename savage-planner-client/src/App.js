@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 
-import {refreshAuthToken, clearAuth, authSetWarning, logout, setAuthToken, getAuthTokenFromLocal} from './actions/auth';
+// import {refreshAuthToken, clearAuth, authSetWarning, logout, setAuthToken, getAuthTokenFromLocal} from './actions/auth';
+import {getAuthTokenFromLocal} from './actions/auth';
 
 import Characters from './components/characters';
 import LoginRegister from './components/login-register';

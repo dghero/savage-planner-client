@@ -3,6 +3,7 @@
   background-color: #47566B;
   /* padding: 15px; */
   padding: 15px 0;
+  border-bottom: 2px solid rgb(51, 61, 77);
 }
 
 .menu-list{

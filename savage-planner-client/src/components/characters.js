@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {Route, Switch} from 'react-router-dom';
 
 import Navigation from './navigation';
-import RequiresLogin from './requires-login';
 import CharacterList from './character-list';
 import Character from './character';
 

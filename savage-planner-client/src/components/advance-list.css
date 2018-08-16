@@ -2,7 +2,6 @@
   display: inline-block;
   width: auto;
   margin: auto;
-  text-align: left;
 }
 
 .advance-list ul{
@@ -17,6 +16,7 @@
   width: 200px;
   margin: 5px;
   padding: 10px;
+  text-align: left;
 }
 
 .advance-item--feedback{
