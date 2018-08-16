@@ -14,8 +14,6 @@ export function Logout(props){
     props.dispatch(logout());
   }
 
-  console.log('AuthToken: ', loadAuthToken());
-
   return(
     <div>
       <Navigation currPage="logout"/>

@@ -2,7 +2,7 @@ import jwtDecode from 'jwt-decode';
 
 import {API_BASE_URL} from '../config';
 import {normalizeResponseErrors} from './utils';
-import {saveAuthToken, clearAuthToken} from '../local-storage';
+import {loadAuthToken, saveAuthToken, clearAuthToken} from '../local-storage';
 
 export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';
 export const setAuthToken = authToken => ({
@@ -49,9 +49,13 @@ const storeAuthInfo = (authToken, dispatch) => {
 };
 
 export const logout = () => (dispatch, getState) => {
-  const authToken = getState().auth.authToken;
+  let authToken = getState().auth.authToken;
+  console.log('throwaway: ', authToken);
   dispatch(clearAuth());
-  clearAuthToken(authToken);
+
+  authToken = getState().auth.authToken;
+  console.log('throwaway2: ', authToken);
+  clearAuthToken();
 };
 
 
@@ -84,6 +88,12 @@ export const login = (username, password) => dispatch => {
         // return Promise.reject('message');
       })
   );
+};
+
+export const getAuthTokenFromLocal = () => (dispatch) =>{
+  const authToken = loadAuthToken();
+  if(authToken)
+    storeAuthInfo(authToken, dispatch);
 };
 
 export const refreshAuthToken = () => (dispatch, getState) => {
