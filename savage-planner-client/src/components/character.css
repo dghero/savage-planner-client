@@ -9,12 +9,16 @@
   margin-bottom: 10px;
 }
 
+.stat-section h2{
+  margin: 3px;
+}
+
 .statbox{
   display: inline-block;
   border: 1px solid black;
   width: auto;
   margin: auto;
-  /* padding: 0 30px 10px 30px; */
+  padding: 5px 20px;
   text-align: left;
 }
 
@@ -26,26 +30,15 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
-
-  /* -moz-column-count: 2;
-  -moz-column-gap: 2px;
-  -webkit-column-count: 2;
-  -webkit-column-gap: 2px;
-  column-count: 2;
-  column-gap: 2px; */
-}
-
-.statbox ul li{
   display: grid;
-  grid-template-columns: 80% auto;
-  grid-template-rows: auto auto;
-  grid-template-areas: "name value";
-  grid-gap: 5px;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(auto-fill, auto);
+  grid-row-gap: 0;
+  grid-column-gap: .2em;
 }
+
 
 .stat-name{
-  /* display: inline-block; */
-  grid-area: name;
   text-align: right;
   border: 1px solid darkblue;
   color: blue;
@@ -53,8 +46,6 @@
 }
 
 .stat-value{
-  /* display: inline-block; */
-  grid-area: value;
   border: 1px solid darkred;
   color: red;
 }

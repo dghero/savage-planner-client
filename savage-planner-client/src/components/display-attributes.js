@@ -28,15 +28,18 @@ export function DisplayAttributes(props){
       attrVal = `12+${(attrVal-12)/2}`;
 
     return (
-      <li key={`final-${attr}`}>
-        <span className="stat-name display-attrs--name">{attrName}:</span> <span className="stat-value display-attrs--value">d{attrVal}</span>
-      </li>
+      [<li key={`final-${attr}-name`} className="stat-name display-attrs--name">
+        {attrName} -
+      </li>,
+      <li key={`final-${attr}-value`} className="stat-value display-attrs--value">
+        d{attrVal}
+      </li>]
     );
   });
   
   return (
     <div className="statbox display-attributes">
-      <h3>Final Attrs</h3>
+      <h3>Attributes</h3>
       <ul>
         {attrListItems}
       </ul>

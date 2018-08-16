@@ -9,7 +9,8 @@ import './display-stats.css';
 export default function DisplayStats(props){
 
   return (
-    <div className="display-stats">
+    <div className="display-stats stat-section">
+      <h2>Final Statistics</h2>
       <DisplayAttributes />
       <DisplaySkills />
       <DisplayEdges />
