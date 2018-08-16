@@ -3,7 +3,8 @@ import {connect} from 'react-redux';
 
 export function DisplayEdges(props){
 
-  const edgeList = props.character.advances
+  const edgeList = props.character.stats.advances
+    .filter(advance => advance.xp <= props.character.maxXp)
     .map(advance => (advance.edgeId ? advance.edgeId.name : null))
     .filter(name => name)
     .join(', ');
@@ -15,7 +16,7 @@ export function DisplayEdges(props){
 
 
 const mapStateToProps = state => ({
-  character: state.character.stats
+  character: state.character
 });
 
 export default connect(mapStateToProps)(DisplayEdges);
