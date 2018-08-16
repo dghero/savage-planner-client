@@ -55,7 +55,7 @@ export function StarterSkills(props){
   });
   
   return (
-    <div className="statbox starter-skills">
+    <div className="statbox skills-box starter-skills">
       <h3>Skills</h3>
       <ul>
         {skillListItems}

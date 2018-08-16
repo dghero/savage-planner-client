@@ -59,7 +59,7 @@ export function DisplaySkills(props){
   });
   
   return (
-    <div className="statbox display-skills">
+    <div className="statbox skills-box display-skills">
       <h3>Skills</h3>
       <ul>
         {skillListItems}

@@ -140,7 +140,7 @@ export function AdvanceListItem(props){
   return(
     <li>
       <div className="advance-field">
-        XP: {currAdv.xp}
+        <span>XP:</span> <span>{currAdv.xp}</span>
         <AdvanceFieldType currAdv={currAdv} />
         <AdvanceFieldVal currAdv={currAdv} />
       </div>

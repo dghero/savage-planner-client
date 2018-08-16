@@ -38,7 +38,7 @@ export function DisplayAttributes(props){
   });
   
   return (
-    <div className="statbox display-attributes">
+    <div className="statbox attrs-box display-attributes">
       <h3>Attributes</h3>
       <ul>
         {attrListItems}

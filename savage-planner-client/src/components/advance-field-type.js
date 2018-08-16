@@ -19,9 +19,10 @@ export function AdvanceFieldType(props){
   );
 
   return (
-    <div className="advance-field--type">
-      Type: {typeSelect}
-    </div>
+    [
+      <span>Type:</span>,
+      <span>{typeSelect}</span>
+    ]
   );
 }
 

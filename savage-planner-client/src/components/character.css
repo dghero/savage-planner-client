@@ -1,22 +1,40 @@
 .character{
   display: inline-block;
   margin: auto;
+  /* max-width: 800px; */
   width: 800px;
-  border: 1px solid green;
+  border: 1px solid lightgreen;
 }
 
-.character-info{
-  margin-bottom: 10px;
+.stat-section{
+  width: auto;
+  border: 1px solid orange;
 }
 
 .stat-section h2{
   margin: 3px;
+  width: auto;
+  
+}
+
+.extra{
+  width: 0;
+}
+
+.skills-box{
+  width: auto;
+}
+
+.attrs-box{
+  width: auto;
+}
+
+.skills-box ul{
 }
 
 .statbox{
   display: inline-block;
   border: 1px solid black;
-  width: auto;
   margin: auto;
   padding: 5px 20px;
   text-align: left;
@@ -37,7 +55,6 @@
   grid-column-gap: .2em;
 }
 
-
 .stat-name{
   text-align: right;
   border: 1px solid darkblue;
@@ -48,4 +65,13 @@
 .stat-value{
   border: 1px solid darkred;
   color: red;
+}
+
+
+.character-info{
+  margin-bottom: 10px;
+}
+
+.point-buy{
+  text-align: right;
 }
