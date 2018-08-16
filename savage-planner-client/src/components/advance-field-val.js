@@ -23,9 +23,12 @@ export function AdvanceFieldVal(props){
   switch(currAdv.advType){
     case 'attr':
       valueHtml = ([
-        <span>Val:</span>,
-        <select defaultValue={currAdv.val} onChange={e =>{
-          props.dispatch(updateAdvanceValues(currAdv.xp, currAdv.advType, e.target.value, null, null));
+        <label key="val-label">Val:</label>,
+        <select 
+          key="val" 
+          defaultValue={currAdv.val}
+          onChange={e =>{
+            props.dispatch(updateAdvanceValues(currAdv.xp, currAdv.advType, e.target.value, null, null));
         }}>
           {noneOption}
           <option value='strength' key={'strength'}>Strength</option>
@@ -40,10 +43,13 @@ export function AdvanceFieldVal(props){
     case 'edge':
       edgeTarget = (currAdv.edgeId  ? currAdv.edgeId.id : 'none');
       valueHtml = ([
-        <span>Val:</span>,
-        <select defaultValue={edgeTarget} onChange={e =>{
+        <label key="val-label">Val:</label>,
+        <select
+          key="val"
+          defaultValue={edgeTarget}
+          onChange={e =>{
             props.dispatch(updateAdvanceValues(currAdv.xp, currAdv.advType, null, null, e.target.value));
-        }} >
+        }}>
           <AdvanceOptionsEdges />
         </select>
       ]);
@@ -51,9 +57,12 @@ export function AdvanceFieldVal(props){
 
     case 'newskill':
       valueHtml = ([
-          <span>Val:</span>,
-          <select defaultValue={currAdv.val} onChange={e =>{
-            props.dispatch(updateAdvanceValues(currAdv.xp, currAdv.advType, e.target.value, null, null));
+          <label key="val-label">Val:</label>,
+          <select 
+            key="val"
+            defaultValue={currAdv.val}
+            onChange={e =>{
+              props.dispatch(updateAdvanceValues(currAdv.xp, currAdv.advType, e.target.value, null, null));
           }}>
             <AdvanceOptionsSkill key={`${currAdv.xp}`} />
           </select>
@@ -62,9 +71,11 @@ export function AdvanceFieldVal(props){
 
     case '1skill':
       valueHtml = ([
-            <span>Val:</span>,
-            <select defaultValue={currAdv.val} onChange={e =>{
-              props.dispatch(updateAdvanceValues(currAdv.xp, currAdv.advType, e.target.value, null, null));
+            <label key="val-label">Val:</label>,
+            <select
+              key="val"
+              defaultValue={currAdv.val} onChange={e =>{
+                props.dispatch(updateAdvanceValues(currAdv.xp, currAdv.advType, e.target.value, null, null));
             }}>
               <AdvanceOptionsSkill key={`${currAdv.xp}-${currAdv.advType}`} />
             </select>
@@ -73,18 +84,24 @@ export function AdvanceFieldVal(props){
     
     case '2skills':
       valueHtml = ([
-        <span>Val:</span> ,
+        <label key="val-label">Val:</label> ,
 
-        <select defaultValue={currAdv.val} onChange={e =>{
+        <select
+          key="val"
+          defaultValue={currAdv.val}
+          onChange={e =>{
             props.dispatch(updateAdvanceValues(currAdv.xp, currAdv.advType, e.target.value, currAdv.val2, null));
         }}>
           <AdvanceOptionsSkill key={`${currAdv.xp}-${currAdv.advType}-1`} />
         </select>,
 
-        <span>Val2:</span>,
+        <label key="val2-label">Val2:</label>,
 
-        <select defaultValue={currAdv.val2} onChange={e =>{
-          props.dispatch(updateAdvanceValues(currAdv.xp, currAdv.advType, currAdv.val, e.target.value, null));
+        <select 
+          key="val2"
+          defaultValue={currAdv.val2}
+          onChange={e =>{
+            props.dispatch(updateAdvanceValues(currAdv.xp, currAdv.advType, currAdv.val, e.target.value, null));
         }}>
           <AdvanceOptionsSkill key={`${currAdv.xp}-${currAdv.advType}-2`} />
         </select>
@@ -92,13 +109,12 @@ export function AdvanceFieldVal(props){
       break;
 
     default: //catches type 'none'
-      valueHtml = (
-        <div className="advance-field--value">
-          Val: <select disabled>
-            <option key='none'>Advance unselected...</option>
+      valueHtml = ([
+          <label key="val-label">Val:</label>,
+          <select key="val" disabled>
+            <option key='none'>No advance...</option>
           </select>
-        </div>
-      );
+      ]);
       break;
   }
   return valueHtml;

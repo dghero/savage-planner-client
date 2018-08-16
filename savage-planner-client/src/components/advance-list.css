@@ -8,19 +8,23 @@
 .advance-list ul{
   list-style-type: none;
   padding: 0;
-  /* -moz-column-count: 3;
-  -moz-column-gap: 2px;
-  -webkit-column-count: 3;
-  -webkit-column-gap: 2px;
-  column-count: 3;
-  column-gap: 2px; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.advance-list li{
+  width: 200px;
+  margin: 5px;
+  padding: 10px;
 }
 
 .advance-field{
+  
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(2, auto);
+  grid-template-columns: 25% auto;
   grid-template-rows: repeat(auto-fill, auto);
   grid-row-gap: 0;
   grid-column-gap: .2em;

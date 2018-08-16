@@ -20,8 +20,8 @@ export function AdvanceFieldType(props){
 
   return (
     [
-      <span>Type:</span>,
-      <span>{typeSelect}</span>
+      <label key="type">Type:</label>,
+      <span key="val">{typeSelect}</span>
     ]
   );
 }
