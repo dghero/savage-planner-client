@@ -40,31 +40,37 @@ export class LoginForm extends React.Component {
             this.props.dispatch(login(this.state.username, this.state.password));
         }}>
           {error}
-          <label htmlFor="login-username">Username</label>
-          <input
-            type="text"
-            name="login-username"
-            id="login-username"
-            onChange={e =>{
-              const username = e.target.value;
-              this.setState({
-                username
-              });
-            }}
-          />
-          <label htmlFor="login-password">Password</label>
-          <input
-            type="text"
-            name="login-password"
-            id="login-password"
-            onChange={e =>{
-              const password = e.target.value;
-              this.setState({
-                password
-              });
-            }}
-          />
-          <input type="submit" value="Login"/>
+          <div>
+            <label htmlFor="login-username">Username</label>
+            <input
+              type="text"
+              name="login-username"
+              id="login-username"
+              onChange={e =>{
+                const username = e.target.value;
+                this.setState({
+                  username
+                });
+              }}
+            />
+          </div>
+          <div>
+            <label htmlFor="login-password">Password</label>
+            <input
+              type="text"
+              name="login-password"
+              id="login-password"
+              onChange={e =>{
+                const password = e.target.value;
+                this.setState({
+                  password
+                });
+              }}
+            />
+          </div>
+          <div>
+            <input className="button" name="login" type="submit" value="Login"/>
+          </div>
         </form>
       </div>
     );

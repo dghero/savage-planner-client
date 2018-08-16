@@ -29,21 +29,21 @@ export function StarterAttribues(props){
     const attrName = attr.charAt(0).toUpperCase() + attr.substring(1);
     const attrVal = attributes[attr];
     return (
-      [<li key={`final-${attr}-name`} className="stat-name starter-attrs--name">
+      [<div key={`final-${attr}-name`} className="stat-name starter-attrs--name">
         {attrName} -
-      </li>,
-      <li key={`final-${attr}-value`} className="stat-value starter-attrs--value">
+      </div>,
+      <div key={`final-${attr}-value`} className="stat-value starter-attrs--value">
         {generateDropdown(attr, attrVal)}
-      </li>]
+      </div>]
     );
   });
 
   return (
     <div className="statbox starter-attributes">
       <h3>Attributes</h3>
-      <ul>
+      <div className="starter-attributes-list statbox-list">
         {attrListItems}
-      </ul>
+      </div>
     </div>
   );
 }

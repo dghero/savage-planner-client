@@ -1,41 +1,52 @@
 .new-char{
   width: auto;
-  
+  font-size: 1.3em;
   margin: 10px auto;
   padding: 20px;
 }
 
-.character-list ul{
-  list-style-type: none;
+.character-list{
+  display: inline-block;
+  border: 1px solid black;
+  margin: auto;
+  padding: 5px 20px;
+  background: #47566B;
+  text-align: left;
+}
+
+.character-list-items{
   margin: 0;
   padding: 0;
+  font-size: 1.2em;
+  display: grid;
+  grid-template-columns: repeat(2,auto);
+  grid-template-rows: repeat(auto-fill, auto);
+  grid-row-gap: .8em;
+  grid-column-gap: 2em;
 }
 
-.character-list ul li{
 
-}
-
-.character-list ul li a{
-  /* text-decoration: none; */
+.character-list-item--name{
+  text-align: right;
 }
 
 /* unvisited link */
-.character-list li a:link {
+.character-list-item--name a:link {
   color: #E8E8E8;
 }
 
 /* visited link */
-.character-list li a:visited {
+.character-list-item--name a:visited {
   color: #E8E8E8;
 }
 
 /* mouse over link */
-.character-list li a:hover {
+.character-list-item--name a:hover {
   color: #E8E8E8;
 }
 
 /* selected link */
-.character-list li a:active {
+.character-list-item--name a:active {
   color: #E8E8E8;
 }
 

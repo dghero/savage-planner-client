@@ -45,21 +45,21 @@ export function StarterSkills(props){
     const skillVal = skills[skill].val;
     
     return (
-      [<li key={`final-${skill}-name`} className="stat-name starter-skills--name">
+      [<div key={`final-${skill}-name`} className="stat-name starter-skills--name">
         {skillName} ({linkedAttr}) -
-      </li>,
-      <li key={`final-${skill}-value`} className="stat-value starter-skills--value">
+      </div>,
+      <div key={`final-${skill}-value`} className="stat-value starter-skills--value">
         {generateDropdown(skill, skillVal)}
-      </li>]
+      </div>]
     );
   });
   
   return (
     <div className="statbox skills-box starter-skills">
       <h3>Skills</h3>
-      <ul>
+      <div className="starter-skills-list statbox-list">
         {skillListItems}
-      </ul>
+      </div>
     </div>
   );
 }

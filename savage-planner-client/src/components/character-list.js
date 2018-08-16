@@ -14,14 +14,18 @@ class CharacterList extends Component{
   }
 
   render(){
-    let charList = this.props.character.list.map(char =>(
-        <li key={char.id}>
-          <a href={`/characters/${char.id}`}>
-            {char.name ? char.name : 'Unnamed Character'}
-          </a>
-          <CharacterDeleteButton id={char.id} />
-          </li>
-    ));
+    let charList = [];
+    this.props.character.list.forEach(char =>{  
+      charList.push(<div className="character-list-item--name">
+        <a href={`/characters/${char.id}`}>
+          {char.name ? char.name : 'Unnamed Character'}
+        </a>
+      </div>);
+
+      charList.push(<div className="character-list-item--delete">
+        <CharacterDeleteButton id={char.id} />
+      </div>);
+    });
 
     let redirect;
     if(this.props.character.charId){
@@ -30,20 +34,24 @@ class CharacterList extends Component{
       );
     }
 
+    console.log(charList);
+
     return (
-      <div className="character-list">
+      <div className="characters">
         {redirect}
-        <h2>Characters</h2>
+        <h1>Characters</h1>
         <div className="new-char">
-          <button onClick={() =>{
+          <button className="button" onClick={() =>{
             this.props.dispatch(newCharacter());
           }}> 
             New Character
           </button>
         </div>
-        <ul>
-          {charList}
-        </ul>
+        <div className="character-list">
+          <div className="character-list-items">
+            {charList}
+          </div>
+        </div>
       </div>
     );
   }

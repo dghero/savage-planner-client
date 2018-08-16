@@ -3,6 +3,7 @@ body{
 }
 
 
+
 .App {
   text-align: center;
   color: #E8E8E8;
@@ -16,10 +17,18 @@ body{
   font-size: large;
 }
 
+.button{
+  border: 1px solid rgba(191, 216, 227, .8);
+  border-radius: 5px;
+  color: #fff;
+  background-color: rgb(27, 97, 128);
+  font-size: 110%;
+}
+
 select{
-  color: #E8E8E8;
+  color: #F8F8F8;
   border-radius: 3px;
-  background: #47566B;
+  background: #62738A;
   /* border-color: #EEEEEE; */
 }
 

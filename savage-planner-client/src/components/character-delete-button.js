@@ -7,7 +7,7 @@ export function CharacterDeleteButton(props) {
   const id = props.id;
 
   return(
-    <button onClick={() =>{
+    <button className="button" onClick={() =>{
       props.dispatch( deleteCharacterReloadList(id) );
     }}>
     Delete

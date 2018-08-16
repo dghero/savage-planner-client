@@ -21,6 +21,7 @@
 
 .advance-item--feedback{
   margin-top: 10px;
+  text-align: right;
 }
 
 .advance-field{
@@ -40,7 +41,7 @@
 .advance-list li{
   border: 1px solid black;
   border-radius: 4px;
-  background: #62738A;
+  background: #47566B;
 }
 
 .advance-list li.invalid-advance{
