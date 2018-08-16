@@ -1,7 +1,9 @@
 import React from 'react';
+import {connect} from 'react-redux';
+
 import './navigation.css';
 
-export default function Navigation(props){
+export  function Navigation(props){
   const page = props.currPage;
   
   return (
@@ -17,12 +19,17 @@ export default function Navigation(props){
           <li key="rules" className="menu-list-item">
             <a href="/rules" className={page==='rules' ? 'current-page' : null}>Rules</a>
           </li>
-          <li key="login" className="menu-list-item">
-            <a href="/index" className={page==='login' ? 'current-page' : null}>Login/Register</a>
-          </li>
-          <li key="logout" className="menu-list-item">
-            <a href="/logout" className={page==='logout' ? 'current-page' : null}>Logout</a>
-          </li>
+          {
+            props.loggedIn 
+              ? <li key="logout" className="menu-list-item">
+                <a href="/logout" className={page==='logout' ? 'current-page' : null}>Logout</a>
+              </li>
+              : <li key="login" className="menu-list-item">
+                  <a href="/index" className={page==='login' ? 'current-page' : null}>Login/Register</a>
+                </li>
+          }
+          
+          
 
         </ul>
         {/* <ul>
@@ -32,3 +39,13 @@ export default function Navigation(props){
     </div>
   );
 }
+
+const mapStateToProps = state => { 
+  return {
+    // auth: state.auth,
+    // hasAuthToken: state.auth.authToken !== null,
+    loggedIn: state.auth.currentUser !== null
+  };
+};
+
+export default connect(mapStateToProps)(Navigation);

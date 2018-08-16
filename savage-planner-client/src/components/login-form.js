@@ -5,6 +5,8 @@ import {connect} from 'react-redux';
 import {login} from '../actions/auth';
 // import {required, nonEmpty} from '../validators';
 
+import './login-form.css';
+
 export class LoginForm extends React.Component {
   constructor(props){
     super(props);
@@ -29,40 +31,42 @@ export class LoginForm extends React.Component {
       );
     }
     return (
-      <form
-        className="login-form"
-        onSubmit={e =>{
-          e.preventDefault();
-          console.log('Submit!', this.state.username, this.state.password);
-          this.props.dispatch(login(this.state.username, this.state.password));
+      <div class="login-form-container">
+        <form
+          className="login"
+          onSubmit={e =>{
+            e.preventDefault();
+            console.log('Submit!', this.state.username, this.state.password);
+            this.props.dispatch(login(this.state.username, this.state.password));
         }}>
-        {error}
-        <label htmlFor="login-username">Username</label>
-        <input
-          type="text"
-          name="login-username"
-          id="login-username"
-          onChange={e =>{
-            const username = e.target.value;
-            this.setState({
-              username
-            });
-          }}
-        />
-        <label htmlFor="login-password">Password</label>
-        <input
-          type="text"
-          name="login-password"
-          id="login-password"
-          onChange={e =>{
-            const password = e.target.value;
-            this.setState({
-              password
-            });
-          }}
-        />
-        <input type="submit" value="Login"/>
-      </form>
+          {error}
+          <label htmlFor="login-username">Username</label>
+          <input
+            type="text"
+            name="login-username"
+            id="login-username"
+            onChange={e =>{
+              const username = e.target.value;
+              this.setState({
+                username
+              });
+            }}
+          />
+          <label htmlFor="login-password">Password</label>
+          <input
+            type="text"
+            name="login-password"
+            id="login-password"
+            onChange={e =>{
+              const password = e.target.value;
+              this.setState({
+                password
+              });
+            }}
+          />
+          <input type="submit" value="Login"/>
+        </form>
+      </div>
     );
   }
 }

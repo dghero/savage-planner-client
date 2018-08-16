@@ -19,19 +19,32 @@
   padding: 10px;
 }
 
+.advance-item--feedback{
+  margin-top: 10px;
+}
+
 .advance-field{
-  
   margin: 0;
   padding: 0;
   display: grid;
   grid-template-columns: 25% auto;
   grid-template-rows: repeat(auto-fill, auto);
-  grid-row-gap: 0;
+  grid-row-gap: .3em;
   grid-column-gap: .2em;
+}
+
+.advance-field label{
+  text-align: right;
 }
 
 .advance-list li{
   border: 1px solid black;
+  border-radius: 4px;
+  background: #62738A;
+}
+
+.advance-list li.invalid-advance{
+  border-color: darkred;
 }
 
 .advance-item--value{

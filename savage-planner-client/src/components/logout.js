@@ -18,14 +18,15 @@ export function Logout(props){
     <div>
       <Navigation currPage="logout"/>
       <div className="logout">
+      <h1>Logged Out</h1>
         <p>Logged out. Thank you for using Savage Planner!</p>
       </div>
 
-      <button onClick={e => {
+      {/* <button onClick={e => {
         console.log('AuthToken Click: ', loadAuthToken());
       }}>
         cLICK ME
-      </button>
+      </button> */}
     </div>
   );
 }

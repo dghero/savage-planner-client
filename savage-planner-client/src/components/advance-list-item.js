@@ -137,14 +137,19 @@ export function AdvanceListItem(props){
 
   invalidRequirement = invalidRequirement.join(', ');
 
+  let isInvalid;
+  isInvalid = invalidRequirement.length > 0;
+
   return(
-    <li>
-      <div className="advance-field">
-        <span>XP:</span> <span>{currAdv.xp}</span>
+    <li className={`advance-item ${isInvalid? 'invalid-advance' : ''}`}>
+      <div className={`advance-field ${isInvalid? 'advance-field--invalid' : ''}`}>
+        <label>XP:</label> <span>{currAdv.xp}</span>
         <AdvanceFieldType currAdv={currAdv} />
         <AdvanceFieldVal currAdv={currAdv} />
       </div>
-      {invalidRequirement}
+      {isInvalid ?
+        <div className="advance-item--feedback">{invalidRequirement}</div>
+        : ''}
     </li>
   );
 }

@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-d
 import {refreshAuthToken, clearAuth, authSetWarning, logout, setAuthToken, getAuthTokenFromLocal} from './actions/auth';
 
 import Characters from './components/characters';
-import Landing from './components/landing';
+import LoginRegister from './components/login-register';
 import Edges from './components/edges';
 import Rules from './components/rules';
 import Logout from './components/logout';
@@ -59,7 +59,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" render={()=>(<Redirect to="/index"/>)} />
             {/* <Route exact path="/index" render={()=>(<Redirect to="/characters"/>)} /> */}
-            <Route exact path="/index" component={Landing}/>
+            <Route exact path="/index" component={LoginRegister}/>
             <Route path="/characters" component={Characters}/>
             <Route exact path="/edges" component={Edges}/>
             <Route exact path="/rules" component={Rules}/>

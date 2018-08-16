@@ -1,0 +1,39 @@
+.login-form-container{
+  margin: auto;
+  width: auto;
+  display: inline-block;
+}
+
+.login {
+  background-color: rgba(191, 216, 227, .4);
+  border: 1px solid rgba(191, 216, 227, .8);
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.login > div {
+  padding: 5px 0;
+}
+
+.login input[type="submit"] {
+  border: 1px solid rgba(191, 216, 227, .8);
+  border-radius: 5px;
+  color: #fff;
+  background-color: rgb(54, 134, 169);
+  font-size: 110%;
+}
+
+.login input[type="text"],
+.login input[type="password"] {
+  border: 1px solid rgba(191, 216, 227, .8);
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 110%;
+  width: 100%;
+}
+
+.actions a {
+  font-size: 80%;
+}
