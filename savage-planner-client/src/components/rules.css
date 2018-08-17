@@ -2,3 +2,22 @@
   margin: auto;
   max-width: 600px;
 }
+
+.rules h2{
+  text-decoration: underline;
+  color: #C2DBF6;
+}
+
+.rank-container{
+  display: inline-block;
+}
+
+.ranks{
+  display: grid;
+  grid-template-columns: repeat(2, max-content );
+  grid-column-gap: .5em;
+}
+
+.ranks--xp{
+  text-align: right;
+}
