@@ -1,3 +1,33 @@
+
+# Savage Planner
+## A Savage Worlds Character Builder
+
+Savage Planner is a character builder app for the Tabletop RPG system, Savage Worlds. It allows users to create multiple characters, modify their starting statistics, and choose their abilities/upgrades for each level-up. If any option selection is in violation of Savage World's character building rules, the app will notify them what selection is invalid and why.
+
+A more robust explanation of character building rules is included in the app's Rules page.
+
+## Live Application
+
+A live version of the app may be found here: https://savage-planner-client.herokuapp.com/index
+
+The following dummy account credentials are available for testing purposes:
+```
+Username: hyperlight
+Password: chaindash
+```
+
+## Screenshots
+### Character Creation
+
+## Tech Stack
+
+
+
+
+
+
+------------------------------------------
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
