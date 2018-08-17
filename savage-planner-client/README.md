@@ -47,17 +47,23 @@ A reference for the special abilities (called "Edges") the user can add to their
 
 ## Tech Stack
 ### Front End
-This app uses react, redux, react-redux, and thunk for client-generation and state management.
-react-router-dom is implemented for route switching and redirection.
-JWT tokens and localstorage are implemented for authentication and login session management.
+* This app uses react, redux, react-redux, and thunk for client-generation and state management.
+* react-router-dom is implemented for route switching and redirection.
+* JWT tokens and localstorage are implemented for authentication and login session management.
 
 ### Back End
-The server implements node with a mongoose database.
-For authentication, it uses passport, passport-local, and passport-jwt,
+* The server implements node with a mongoose database.
+* For authentication, it uses passport, passport-local, and passport-jwt,
 
-
-
-
+## Key Components
+* App.js is the root component
+* login-register.js is the landing page, and allows for user login/registration
+* character-list.js manages the user's list of characters 
+* character.js manages the Character Editor.
+* rules.js provides the overview for basic game information and character building rules
+* edges.js provides the list of special abilities that can be gained during character creation
+* logout.js allows the user to log out
+* navigation.js allows user to navigate the site
 
 ------------------------------------------
 
