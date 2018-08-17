@@ -17,10 +17,43 @@ Password: chaindash
 ```
 
 ## Screenshots
-### Character Creation
+### Login/Registration
+Allows the user login or create a new account.
+
+<img width="400" alt="login-reg" src="https://raw.githubusercontent.com/thinkful-ei22/devinhero-savage-planner-client/master/savage-planner-client/screenshots/login-reg.png" />
+
+### Character List
+The page listing all the user's characters, and the place to create new characters
+
+<img width="400" alt="char-list" src="https://raw.githubusercontent.com/thinkful-ei22/devinhero-savage-planner-client/master/savage-planner-client/screenshots/char-list.png" />
+
+### Character Editor
+The page to modify an existing character
+
+<img width="400" alt="char-1" src="https://raw.githubusercontent.com/thinkful-ei22/devinhero-savage-planner-client/master/savage-planner-client/screenshots/char-1.png" />
+<img width="400" alt="char-2" src="https://raw.githubusercontent.com/thinkful-ei22/devinhero-savage-planner-client/master/savage-planner-client/screenshots/char-2.png" />
+<img width="400" alt="char-3" src="https://raw.githubusercontent.com/thinkful-ei22/devinhero-savage-planner-client/master/savage-planner-client/screenshots/char-3.png" />
+
+### Rules
+A basic, bare-bones overview of the Savage Worlds Tabletop RPG System, and the rules for character creation.
+
+<img width="400" alt="rules" src="https://raw.githubusercontent.com/thinkful-ei22/devinhero-savage-planner-client/master/savage-planner-client/screenshots/rules.png" />
+
+### Edge List
+A reference for the special abilities (called "Edges") the user can add to their character
+
+<img width="400" alt="edge-list" src="https://raw.githubusercontent.com/thinkful-ei22/devinhero-savage-planner-client/master/savage-planner-client/screenshots/edge-list.png" />
+
 
 ## Tech Stack
+### Front End
+This app uses react, redux, react-redux, and thunk for client-generation and state management.
+react-router-dom is implemented for route switching and redirection.
+JWT tokens and localstorage are implemented for authentication and login session management.
 
+### Back End
+The server implements node with a mongoose database.
+For authentication, it uses passport, passport-local, and passport-jwt,
 
 
 
