@@ -47,7 +47,7 @@
   grid-column-gap: 0;
 }
 
-@media (max-width: 500px){
+@media (max-width: 745px){
   .statbox-list{
     grid-template-columns: repeat(2, auto );
   }

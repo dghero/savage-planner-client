@@ -32,10 +32,11 @@ export const authError = error => ({
   error
 });
 
-export const AUTH_SET_WARNING = 'AUTH_SET_WARNING';
-export const authSetWarning = warning => ({
-  type: AUTH_SET_WARNING,
-  warning
+
+export const AUTH_REG_RESPONSE = 'AUTH_REG_RESPONSE';
+export const authRegResponse = regMessage => ({
+  type: AUTH_REG_RESPONSE,
+  regMessage
 });
 
 
@@ -53,6 +54,27 @@ export const logout = () => (dispatch) => {
   clearAuthToken();
 };
 
+export const register = (username, password) => dispatch =>{
+  return fetch(`${API_BASE_URL}/api/users`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      username,
+      password
+    })
+  })
+  .then(res => normalizeResponseErrors(res))
+  .then(res => res.json())
+  .then(res =>{
+    console.log('success: ', res);
+    dispatch(authRegResponse('Registration Successful'));
+  })
+  .catch(err =>{
+    console.log('err: ', err);
+  });
+};
 
 export const login = (username, password) => dispatch => {
   dispatch(authRequest());
@@ -73,7 +95,8 @@ export const login = (username, password) => dispatch => {
       .then(res => res.json())
       .then(({authToken}) => storeAuthInfo(authToken, dispatch))
       .catch(err => {
-        const {code} = err;
+        console.log(err);
+        const code = err.status;
         const message =
                     code === 401
                       ? 'Incorrect username or password'

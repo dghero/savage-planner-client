@@ -4,6 +4,7 @@ import {Redirect} from 'react-router-dom';
 
 import Navigation from './navigation';
 import LoginForm from './login-form';
+import RegisterForm from './register-form';
 
 import './login-register.css';
 
@@ -23,10 +24,16 @@ export function LoginRegister(props){
             game system, Savage Worlds. For more information, please see
             the Rules page.
           </p>
-          <p>Please login or register to continue.</p>
+          <p>Please login or register below.</p>
           
-          <h2>Login</h2>
-          <LoginForm />
+          <div className="formContainer">
+            <h2>Login</h2>
+            <LoginForm />
+          </div>
+          <div className="formContainer">
+            <h2>Register</h2>
+            <RegisterForm />
+          </div>
         </div>
       </main>
     </div>

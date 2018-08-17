@@ -16,8 +16,8 @@ import { loadAuthToken } from './local-storage';
 
 class App extends Component {
   componentWillMount(){
-    const token = loadAuthToken();
-    console.log('compwillmount token: ', token);
+    // const token = loadAuthToken();
+    // console.log('compwillmount token: ', token);
     this.props.dispatch(getAuthTokenFromLocal());
   }
 

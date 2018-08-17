@@ -4,7 +4,7 @@ import {
   AUTH_REQUEST,
   AUTH_SUCCESS,
   AUTH_ERROR,
-  AUTH_SET_WARNING
+  AUTH_REG_RESPONSE
 } from '../actions/auth';
 
 const initialState = {
@@ -12,6 +12,7 @@ const initialState = {
   currentUser: null,
   loading: false,
   error: null,
+  regMessage: null,
   warning: false
 };
 
@@ -47,9 +48,9 @@ export function authReducer(state=initialState, action){
         error: action.error
       }
 
-    case AUTH_SET_WARNING:
+    case AUTH_REG_RESPONSE:
       return {...state,
-        warning: action.warning
+        regMessage: action.regMessage
       }
 
     default:

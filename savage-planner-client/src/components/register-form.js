@@ -2,12 +2,12 @@ import React from 'react';
 import {connect} from 'react-redux';
 // import {Field, reduxForm, focus} from 'redux-form';
 // import Input from './input';
-import {login} from '../actions/auth';
+import {register} from '../actions/auth';
 // import {required, nonEmpty} from '../validators';
 
-import './login-form.css';
+import './register-form.css';
 
-export class LoginForm extends React.Component {
+export class registerForm extends React.Component {
   constructor(props){
     super(props);
     this.state={
@@ -17,30 +17,30 @@ export class LoginForm extends React.Component {
   }
 
   render() {
-    let error;
-    if (this.props.auth.error) {
-      error = (
+    let message;
+    if (this.props.auth.regMessage) {
+      message = (
         <div className="form-error" aria-live="polite">
-          {this.props.auth.error}
+          {this.props.auth.regMessage}
         </div>
       );
     }
     return (
-      <div className="login-form-container">
+      <div className="register-form-container">
         <form
-          className="login"
+          className="register"
           onSubmit={e =>{
             e.preventDefault();
-            console.log('Submit!', this.state.username, this.state.password);
-            this.props.dispatch(login(this.state.username, this.state.password));
+            console.log('Register!', this.state.username, this.state.password);
+            this.props.dispatch(register(this.state.username, this.state.password));
         }}>
           
           <div>
-            <label htmlFor="login-username">Username</label>
+            <label htmlFor="register-username">Username</label>
             <input
               type="text"
-              name="login-username"
-              id="login-username"
+              name="register-username"
+              id="register-username"
               onChange={e =>{
                 const username = e.target.value;
                 this.setState({
@@ -50,11 +50,11 @@ export class LoginForm extends React.Component {
             />
           </div>
           <div>
-            <label htmlFor="login-password">Password</label>
+            <label htmlFor="register-password">Password</label>
             <input
               type="password"
-              name="login-password"
-              id="login-password"
+              name="register-password"
+              id="register-password"
               onChange={e =>{
                 const password = e.target.value;
                 this.setState({
@@ -64,10 +64,10 @@ export class LoginForm extends React.Component {
             />
           </div>
           <div>
-            <input className="button" name="login" type="submit" value="Login"/>
+            <input className="button" name="register" type="submit" value="Register"/>
           </div>
         </form>
-        {error}
+        {message}
       </div>
     );
   }
@@ -77,4 +77,4 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps)(LoginForm);
+export default connect(mapStateToProps)(registerForm);

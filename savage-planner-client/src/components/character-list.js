@@ -16,13 +16,13 @@ class CharacterList extends Component{
   render(){
     let charList = [];
     this.props.character.list.forEach(char =>{  
-      charList.push(<div className="character-list-item--name">
+      charList.push(<div className="character-list-item--name" key={char.id}>
         <a href={`/characters/${char.id}`}>
           {char.name ? char.name : 'Unnamed Character'}
         </a>
       </div>);
 
-      charList.push(<div className="character-list-item--delete">
+      charList.push(<div className="character-list-item--delete" key={`${char.id}-del`}>
         <CharacterDeleteButton id={char.id} />
       </div>);
     });
@@ -33,8 +33,6 @@ class CharacterList extends Component{
         <Redirect to={`/characters/${this.props.character.charId}`} />
       );
     }
-
-    console.log(charList);
 
     return (
       <div className="characters">
@@ -47,11 +45,17 @@ class CharacterList extends Component{
             New Character
           </button>
         </div>
-        <div className="character-list">
-          <div className="character-list-items">
-            {charList}
-          </div>
-        </div>
+
+        {charList.length > 0
+          ? <div className="character-list">
+              <div className="character-list-items">
+                {charList}
+              </div>
+            </div>
+          : ''
+        }
+
+
       </div>
     );
   }
