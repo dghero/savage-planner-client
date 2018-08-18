@@ -8,7 +8,7 @@ export function CharacterInfo(props){
   return (
     <div className="character-info">
       <form>
-        <label for="char-name">Name: </label> 
+        <label htmlFor="char-name">Name: </label> 
         <input  
           id="char-name"
           type='text'

@@ -67,7 +67,7 @@ export class registerForm extends React.Component {
             <input className="button" name="register" type="submit" value="Register"/>
           </div>
         </form>
-        {message}
+        <div aria-live="polite">{message}</div>
       </div>
     );
   }

@@ -15,7 +15,7 @@ class Characters extends Component {
     return (
       <div>
         <Navigation currPage={'character'} />
-        <main>
+        <main role="main">
           <Switch>
             <Route exact path="/characters" component={CharacterList}/>
             <Route exact path="/characters/:charId" component={Character}/>

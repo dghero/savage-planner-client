@@ -66,7 +66,7 @@ export class LoginForm extends React.Component {
             <input className="button" name="login" type="submit" value="Login"/>
           </div>
         </form>
-        {error}
+        <div aria-live="polite">{error}</div>
       </div>
     );
   }

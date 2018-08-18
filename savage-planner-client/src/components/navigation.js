@@ -8,7 +8,7 @@ export  function Navigation(props){
   
   return (
     <div className="menu">
-      <nav>
+      <nav role="navigation">
         <ul className="menu-list">
           <li key="character" className="menu-list-item">
             <a href="/characters" className={page==='character' ? 'current-page' : null}>Characters</a>

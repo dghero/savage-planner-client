@@ -15,7 +15,7 @@ export function Logout(props){
   return(
     <div>
       <Navigation currPage="logout"/>
-      <main>
+      <main role="main">
         <div className="logout">
         <h1>Logged Out</h1>
           <p>Logged out. Thank you for using Savage Planner!</p>

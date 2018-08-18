@@ -9,8 +9,8 @@ export function DisplayXpDropdown(props){
     ));
 
   return (
-    <div className="display-stats">
-      <label for="xp-filter">XP Filter: </label>
+    <div className="xp-dropdown">
+      <label htmlFor="xp-filter">XP Filter: </label>
       <select 
         id="xp-filter"
         name="xp-filter"

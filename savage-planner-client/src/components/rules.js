@@ -9,7 +9,7 @@ export default function Rules(props){
   return (
     <div>
       <Navigation currPage={'rules'} />
-      <main>
+      <main role="main">
         <div className="rules">
           <h1>Character Creation Rules</h1>
           <p>

@@ -147,9 +147,11 @@ export function AdvanceListItem(props){
         <AdvanceFieldType currAdv={currAdv} />
         <AdvanceFieldVal currAdv={currAdv} />
       </div>
-      {isInvalid ?
-        <div className="advance-item--feedback">{invalidRequirement}</div>
-        : ''}
+      <div aria-live="polite" className="advance-item--feedback">
+        {isInvalid ?
+          invalidRequirement
+          : ''}
+        </div>
     </li>
   );
 }

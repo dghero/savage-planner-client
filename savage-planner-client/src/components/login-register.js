@@ -17,7 +17,7 @@ export function LoginRegister(props){
           ? <Redirect to="/characters" />
           : ''
       }
-      <main>
+      <main role="main">
         <div className="landing">
           <h1>Welcome to Savage Planner</h1>
           <p>Savage Planner is a character builder for the Tabletop RPG

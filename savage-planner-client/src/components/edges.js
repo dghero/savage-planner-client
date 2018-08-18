@@ -23,7 +23,7 @@ class Edges extends Component {
     return (
       <div>
         <Navigation currPage={'edges'} />
-        <main>
+        <main role="main">
           <div className="edges">
             <h1>Edges</h1>
             <ul>
