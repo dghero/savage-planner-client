@@ -68,11 +68,12 @@ export const register = (username, password) => dispatch =>{
   .then(res => normalizeResponseErrors(res))
   .then(res => res.json())
   .then(res =>{
-    console.log('success: ', res);
+    // console.log('success: ', res);
     dispatch(authRegResponse('Registration Successful'));
   })
   .catch(err =>{
-    console.log('err: ', err);
+    // console.log(err);
+    dispatch(authRegResponse(err.message));
   });
 };
 
@@ -95,7 +96,7 @@ export const login = (username, password) => dispatch => {
       .then(res => res.json())
       .then(({authToken}) => storeAuthInfo(authToken, dispatch))
       .catch(err => {
-        console.log(err);
+        // console.log(err);
         const code = err.status;
         const message =
                     code === 401

@@ -31,7 +31,7 @@ export class registerForm extends React.Component {
           className="register"
           onSubmit={e =>{
             e.preventDefault();
-            console.log('Register!', this.state.username, this.state.password);
+            // console.log('Register!', this.state.username, this.state.password);
             this.props.dispatch(register(this.state.username, this.state.password));
         }}>
           

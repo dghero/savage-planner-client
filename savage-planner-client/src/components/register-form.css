@@ -37,3 +37,7 @@
 .actions a {
   font-size: 80%;
 }
+
+.form-error{
+  width: 300px;
+}

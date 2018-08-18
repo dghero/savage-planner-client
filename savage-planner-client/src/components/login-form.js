@@ -31,7 +31,7 @@ export class LoginForm extends React.Component {
           className="login"
           onSubmit={e =>{
             e.preventDefault();
-            console.log('Submit!', this.state.username, this.state.password);
+            // console.log('Submit!', this.state.username, this.state.password);
             this.props.dispatch(login(this.state.username, this.state.password));
         }}>
           
