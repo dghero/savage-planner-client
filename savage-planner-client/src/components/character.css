@@ -1,9 +1,7 @@
 .character{
   display: inline-block;
   margin: auto;
-  /* max-width: 800px; */
   max-width: 800px;
-  /* border: 1px solid lightgreen; */
 }
 
 .stat-section{
@@ -15,11 +13,6 @@
 .stat-section h2{
   margin: 3px;
   width: auto;
-  
-}
-
-.extra{
-  width: 0;
 }
 
 .statbox{
@@ -30,8 +23,6 @@
   background: #47566B;
   text-align: left;
 }
-
-
 
 .statbox h3{
   margin-top: 0;
@@ -52,17 +43,6 @@
     grid-template-columns: repeat(2, auto );
   }
 }
-
-.skills-box ul li{
-  display: inline-block;
-  border: 1px solid green;
-  width: 210px;
-}
-
-.skills-box ul li > *{
-  display: inline-block;
-}
-
 
 .stat{
   border-bottom: 1px solid rgb(51, 61, 77);

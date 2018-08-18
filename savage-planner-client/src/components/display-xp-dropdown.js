@@ -10,7 +10,11 @@ export function DisplayXpDropdown(props){
 
   return (
     <div className="display-stats">
-      <select defaultValue={props.character.maxXp} onChange={e =>{
+      <label for="xp-filter">XP Filter: </label>
+      <select 
+        id="xp-filter"
+        name="xp-filter"
+        defaultValue={props.character.maxXp} onChange={e =>{
         props.dispatch(setMaxDisplayXp(e.target.value));
       }}>
         <option key={0} value="0">0 XP</option>

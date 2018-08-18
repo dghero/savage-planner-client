@@ -12,7 +12,7 @@ import Rules from './components/rules';
 import Logout from './components/logout';
 
 import './App.css';
-import { loadAuthToken } from './local-storage';
+// import { loadAuthToken } from './local-storage';
 
 class App extends Component {
   componentWillMount(){
@@ -59,7 +59,6 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path="/" render={()=>(<Redirect to="/index"/>)} />
-            {/* <Route exact path="/index" render={()=>(<Redirect to="/characters"/>)} /> */}
             <Route exact path="/index" component={LoginRegister}/>
             <Route path="/characters" component={Characters}/>
             <Route exact path="/edges" component={Edges}/>

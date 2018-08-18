@@ -39,7 +39,7 @@
 }
 
 .advance-list li{
-  border: 1px solid black;
+  border: 1px solid rgb(51, 61, 77);
   border-radius: 4px;
   background: #47566B;
 }

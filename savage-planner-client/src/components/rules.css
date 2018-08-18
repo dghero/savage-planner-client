@@ -5,6 +5,11 @@
 
 .rules h2{
   text-decoration: underline;
+}
+
+.rules h2,
+.rules h3,
+.rules h4{
   color: #C2DBF6;
 }
 

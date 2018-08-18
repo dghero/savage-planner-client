@@ -37,7 +37,7 @@ export function EdgeItem(props){
 
   return (
     <div className="edge-item">
-      <h3>{edge.name}</h3>
+      <h2>{edge.name}</h2>
       <span>Requirements:</span> {finalReqs}
       <p>{edge.description}</p>
     </div>

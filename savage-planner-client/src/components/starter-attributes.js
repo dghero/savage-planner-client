@@ -8,7 +8,7 @@ export function StarterAttribues(props){
 
   const generateDropdown = function(attr, currentVal){
     return(
-      <select defaultValue={currentVal} onChange={e=>
+      <select id={`starter-${attr}`} name={`starter-${attr}`} defaultValue={currentVal} onChange={e=>
             props.dispatch(updateStarterAttr(attr, e.target.value))
           }>
         <option value="4">d4</option>
@@ -29,10 +29,10 @@ export function StarterAttribues(props){
     const attrName = attr.charAt(0).toUpperCase() + attr.substring(1);
     const attrVal = attributes[attr];
     return (
-      [<div key={`final-${attr}-name`} className="stat stat-name starter-attrs--name">
-        {attrName} -
+      [<div key={`starter-${attr}-name`} className="stat stat-name starter-attrs--name">
+        <label htmlFor={`starter-${attr}`}>{attrName}</label> -
       </div>,
-      <div key={`final-${attr}-value`} className="stat stat-value starter-attrs--value">
+      <div key={`starter-${attr}-value`} className="stat stat-value starter-attrs--value">
         {generateDropdown(attr, attrVal)}
       </div>]
     );
@@ -41,9 +41,9 @@ export function StarterAttribues(props){
   return (
     <div className="statbox starter-attributes">
       <h3>Attributes</h3>
-      <div className="starter-attributes-list statbox-list">
+      <form className="starter-attributes-list statbox-list">
         {attrListItems}
-      </div>
+      </form>
     </div>
   );
 }

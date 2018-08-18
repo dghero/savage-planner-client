@@ -12,10 +12,6 @@ import {
 export function AdvanceFieldVal(props){
   let valueHtml;
 
-  // const edgeOptions = props.edges.list.map(edge =>
-  //   (<option value={edge.id} key={edge.name}>{edge.name}</option>)
-  // );
-
   const noneOption = (<option value='none' key='none'>Select...</option>);
   const currAdv = props.currAdv;
   let edgeTarget;
@@ -23,8 +19,9 @@ export function AdvanceFieldVal(props){
   switch(currAdv.advType){
     case 'attr':
       valueHtml = ([
-        <label key="val-label">Val:</label>,
+        <label htmlFor={`${currAdv.xp}-val`} key="val-label">Val:</label>,
         <select 
+          id={`${currAdv.xp}-val`}
           key="val" 
           defaultValue={currAdv.val}
           onChange={e =>{
@@ -43,8 +40,9 @@ export function AdvanceFieldVal(props){
     case 'edge':
       edgeTarget = (currAdv.edgeId  ? currAdv.edgeId.id : 'none');
       valueHtml = ([
-        <label key="val-label">Val:</label>,
+        <label htmlFor={`${currAdv.xp}-val`} key="val-label">Val:</label>,
         <select
+          id={`${currAdv.xp}-val`} 
           key="val"
           defaultValue={edgeTarget}
           onChange={e =>{
@@ -57,8 +55,9 @@ export function AdvanceFieldVal(props){
 
     case 'newskill':
       valueHtml = ([
-          <label key="val-label">Val:</label>,
+          <label htmlFor={`${currAdv.xp}-val`} key="val-label">Val:</label>,
           <select 
+            id={`${currAdv.xp}-val`}
             key="val"
             defaultValue={currAdv.val}
             onChange={e =>{
@@ -71,8 +70,9 @@ export function AdvanceFieldVal(props){
 
     case '1skill':
       valueHtml = ([
-            <label key="val-label">Val:</label>,
+            <label htmlFor={`${currAdv.xp}-val`} key="val-label">Val:</label>,
             <select
+              id={`${currAdv.xp}-val`}
               key="val"
               defaultValue={currAdv.val} onChange={e =>{
                 props.dispatch(updateAdvanceValues(currAdv.xp, currAdv.advType, e.target.value, null, null));
@@ -84,9 +84,10 @@ export function AdvanceFieldVal(props){
     
     case '2skills':
       valueHtml = ([
-        <label key="val-label">Val:</label> ,
+        <label htmlFor={`${currAdv.xp}-val`} key="val-label">Val:</label> ,
 
         <select
+          id={`${currAdv.xp}-val`}
           key="val"
           defaultValue={currAdv.val}
           onChange={e =>{
@@ -95,9 +96,10 @@ export function AdvanceFieldVal(props){
           <AdvanceOptionsSkill key={`${currAdv.xp}-${currAdv.advType}-1`} />
         </select>,
 
-        <label key="val2-label">Val2:</label>,
+        <label htmlFor={`${currAdv.xp}-val2`} key="val2-label">Val2:</label>,
 
         <select 
+        id={`${currAdv.xp}-val2`}
           key="val2"
           defaultValue={currAdv.val2}
           onChange={e =>{
@@ -110,8 +112,12 @@ export function AdvanceFieldVal(props){
 
     default: //catches type 'none'
       valueHtml = ([
-          <label key="val-label">Val:</label>,
-          <select key="val" disabled>
+          <label htmlFor={`${currAdv.xp}-val`} key="val-label">Val:</label>,
+          <select 
+            id={`${currAdv.xp}-val`}
+            key="val" 
+            disabled
+          >
             <option key='none'>No advance...</option>
           </select>
       ]);

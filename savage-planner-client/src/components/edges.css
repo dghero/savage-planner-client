@@ -23,8 +23,9 @@
   text-align: left;
 }
 
-.edge-item h3{
+.edge-item h2{
   margin-top: 0;
+  text-decoration: underline;
 }
 
 .edge-item p{

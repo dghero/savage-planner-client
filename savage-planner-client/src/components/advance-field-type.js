@@ -5,9 +5,13 @@ import {
 } from '../actions/char';
 
 export function AdvanceFieldType(props){
+  const currAdv = props.currAdv;
+
   const typeSelect = (
-    <select defaultValue={props.currAdv.advType} onChange={e =>{
-      props.dispatch(updateAdvanceType(props.currAdv.xp, e.target.value));
+    <select
+      id={`${currAdv.xp}-type`} name={`${currAdv.xp}-type`}
+      defaultValue={currAdv.advType} onChange={e =>{
+        props.dispatch(updateAdvanceType(currAdv.xp, e.target.value));
     }}>
       <option value="none" key='none'>None</option>
       <option value="edge" key='edge'>New Edge</option>
@@ -20,7 +24,7 @@ export function AdvanceFieldType(props){
 
   return (
     [
-      <label key="type">Type:</label>,
+      <label htmlFor={`${currAdv.xp}-type`} key="type">Type:</label>,
       <span key="val">{typeSelect}</span>
     ]
   );
