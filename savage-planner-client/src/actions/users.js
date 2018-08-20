@@ -12,7 +12,6 @@ export const registerUser = (username, password) => dispatch => {
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
     .catch(err => {
-      // const {reason, message, location} = err;
       console.err('Register failed', err);
     });
 };

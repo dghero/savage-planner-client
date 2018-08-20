@@ -42,8 +42,6 @@ export function LoginRegister(props){
 
 const mapStateToProps = state => { 
   return {
-    // auth: state.auth,
-    // hasAuthToken: state.auth.authToken !== null,
     loggedIn: state.auth.currentUser !== null
   };
 };

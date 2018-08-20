@@ -1,9 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-// import {Field, reduxForm, focus} from 'redux-form';
-// import Input from './input';
 import {register} from '../actions/auth';
-// import {required, nonEmpty} from '../validators';
 
 import './register-form.css';
 
@@ -31,7 +28,6 @@ export class registerForm extends React.Component {
           className="register"
           onSubmit={e =>{
             e.preventDefault();
-            // console.log('Register!', this.state.username, this.state.password);
             this.props.dispatch(register(this.state.username, this.state.password));
         }}>
           

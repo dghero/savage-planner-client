@@ -2,7 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import {updateStarterAttr} from '../actions/char';
-// import StarterAttributeDropdown from './starter-attribute-dropdown'
 
 export function StarterAttribues(props){
 

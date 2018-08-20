@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 
-// import {refreshAuthToken, clearAuth, authSetWarning, logout, setAuthToken, getAuthTokenFromLocal} from './actions/auth';
 import {getAuthTokenFromLocal} from './actions/auth';
 
 import Characters from './components/characters';
@@ -12,46 +11,11 @@ import Rules from './components/rules';
 import Logout from './components/logout';
 
 import './App.css';
-// import { loadAuthToken } from './local-storage';
 
 class App extends Component {
   componentWillMount(){
-    // const token = loadAuthToken();
-    // console.log('compwillmount token: ', token);
     this.props.dispatch(getAuthTokenFromLocal());
   }
-
-  // componentDidUpdate(prevProps) {
-  //   if (!prevProps.loggedIn && this.props.loggedIn) {
-  //     // When we are logged in, refresh the auth token periodically
-  //     console.log('Begin refresh');
-  //     this.startPeriodicRefresh();
-  //   } else if (prevProps.loggedIn && !this.props.loggedIn) {
-  //     // Stop refreshing when we log out
-  //     console.log('Stop refresh');
-  //     this.stopPeriodicRefresh();
-  //     // this.props.dispatch(logout());
-  //   }
-  // }
-
-  // componentWillUnmount() {
-  //   this.stopPeriodicRefresh();
-  // }
-
-  // startPeriodicRefresh() {
-  //   this.refreshInterval = setInterval(
-  //     () => this.props.dispatch(refreshAuthToken()),
-  //     60 * 60 * 1000 // 1 hr
-  //   );
-  // }
-
-  // stopPeriodicRefresh() {
-  //   if (!this.refreshInterval) {
-  //     return;
-  //   }
-
-  //   clearInterval(this.refreshInterval);
-  // }
 
   render() {  
     return (

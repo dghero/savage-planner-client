@@ -38,8 +38,6 @@ export function AdvanceListItem(props){
     }
   });
 
-  // console.log('final ', currAdv.xp, prevStats);
-
   let invalidRequirement = [];
   let max;
   let count;
@@ -123,9 +121,6 @@ export function AdvanceListItem(props){
         if(prevStats.skills[currAdv.val2] >= prevStats.attrs[attrKey])
           invalidRequirement.push('Skill 2 not below associated attribute');
       }
-
-      // if(invalidRequirement.length > 0)
-      //   invalidRequirement = invalidRequirement.map(msgString => (<p>{msgString}</p> ));
       break;
     
     case 'none': 

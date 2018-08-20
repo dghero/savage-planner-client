@@ -1,10 +1,8 @@
 import {createStore, applyMiddleware, combineReducers} from 'redux';
-// import {reducer as formReducer} from 'redux-form';
 import thunk from 'redux-thunk';
 
 //Local storage bits
 import {loadAuthToken} from './local-storage';
-// import {setAuthToken, refreshAuthToken} from './actions/auth';
 import {setAuthToken} from './actions/auth';
 
 //Reducers to combine

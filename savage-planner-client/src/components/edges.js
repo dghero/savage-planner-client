@@ -13,7 +13,6 @@ class Edges extends Component {
   }
 
   render() {
-    // console.log(this.props.edges);
     const formattedEdges = this.props.edges.map(edge =>(
       <li key={edge.name}>
         <EdgeItem edge={edge} />

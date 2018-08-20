@@ -28,13 +28,7 @@ export  function Navigation(props){
                   <a href="/index" className={page==='login' ? 'current-page' : null}>Login/Register</a>
                 </li>
           }
-          
-          
-
         </ul>
-        {/* <ul>
-          
-        </ul> */}
       </nav>
     </div>
   );
@@ -42,8 +36,6 @@ export  function Navigation(props){
 
 const mapStateToProps = state => { 
   return {
-    // auth: state.auth,
-    // hasAuthToken: state.auth.authToken !== null,
     loggedIn: state.auth.currentUser !== null
   };
 };
