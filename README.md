@@ -55,6 +55,10 @@ A reference for the special abilities (called "Edges") the user can add to their
 * The server implements node with a mongoose database.
 * For authentication, it uses passport, passport-local, and passport-jwt,
 
+The server repo may be found here:
+
+https://github.com/dghero/savage-planner-server
+
 ## Key Components
 * App.js is the root component
 * login-register.js is the landing page, and allows for user login/registration
