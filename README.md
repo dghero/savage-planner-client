@@ -12,8 +12,8 @@ A live version of the app may be found here: https://savage-planner-client.herok
 
 The following dummy account credentials are available for testing purposes:
 ```
-Username: hyperlight
-Password: chaindash
+Username: user1
+Password: password
 ```
 
 ## Screenshots
