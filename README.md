@@ -12,8 +12,8 @@ A live version of the app may be found here: https://savage-planner-client.herok
 
 The following dummy account credentials are available for testing purposes:
 ```
-Username: hyperlight
-Password: chaindash
+Username: user1
+Password: password
 ```
 
 ## Screenshots
@@ -54,6 +54,10 @@ A reference for the special abilities (called "Edges") the user can add to their
 ### Back End
 * The server implements node with a mongoose database.
 * For authentication, it uses passport, passport-local, and passport-jwt,
+
+The server repo may be found here:
+
+https://github.com/dghero/savage-planner-server
 
 ## Key Components
 * App.js is the root component
