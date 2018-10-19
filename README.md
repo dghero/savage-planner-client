@@ -20,29 +20,29 @@ Password: chaindash
 ### Login/Registration
 Allows the user login or create a new account.
 
-<img width="400" alt="login-reg" src="https://raw.githubusercontent.com/dghero/savage-planner-client/master/screenshots/login-reg.png" />
+<img width="400" alt="login-reg" src="./screenshots/login-reg.png" />
 
 ### Character List
 The page listing all the user's characters, and the place to create new characters
 
-<img width="400" alt="char-list" src="https://raw.githubusercontent.com/dghero/savage-planner-client/master/screenshots/char-list.png" />
+<img width="400" alt="char-list" src="./screenshots/char-list.png" />
 
 ### Character Editor
 The page to modify an existing character
 
-<img width="400" alt="char-1" src="https://raw.githubusercontent.com/dghero/savage-planner-client/master/screenshots/char-1.png" />
-<img width="400" alt="char-2" src="https://raw.githubusercontent.com/dghero/savage-planner-client/master/screenshots/char-2.png" />
-<img width="400" alt="char-3" src="https://raw.githubusercontent.com/dghero/savage-planner-client/master/screenshots/char-3.png" />
+<img width="400" alt="char-1" src="./screenshots/char-1.png" />
+<img width="400" alt="char-2" src="./screenshots/char-2.png" />
+<img width="400" alt="char-3" src="./screenshots/char-3.png" />
 
 ### Rules
 A basic, bare-bones overview of the Savage Worlds Tabletop RPG System, and the rules for character creation.
 
-<img width="400" alt="rules" src="https://raw.githubusercontent.com/dghero/savage-planner-client/master/screenshots/rules.png" />
+<img width="400" alt="rules" src="./screenshots/rules.png" />
 
 ### Edge List
 A reference for the special abilities (called "Edges") the user can add to their character
 
-<img width="400" alt="edge-list" src="https://raw.githubusercontent.com/dghero/savage-planner-client/master/screenshots/edge-list.png" />
+<img width="400" alt="edge-list" src="./screenshots/edge-list.png" />
 
 
 ## Tech Stack
