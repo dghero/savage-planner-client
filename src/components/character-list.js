@@ -37,7 +37,7 @@ class CharacterList extends Component{
     return (
       <div className="characters">
         {redirect}
-        <h1>Characters</h1>
+        <header><h1>Characters</h1></header>
         <div className="new-char">
           <button className="button" onClick={() =>{
             this.props.dispatch(newCharacter());

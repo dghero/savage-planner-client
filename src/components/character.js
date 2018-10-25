@@ -37,7 +37,7 @@ class Character extends Component{
 
     return(
       <div className="character">
-        <h1>Character Builder</h1>
+        <header><h1>Character Builder</h1></header>
         {charErr}
         {displayCharacter}
       </div>

@@ -22,12 +22,12 @@ export function AdvanceList(props){
   }
 
   return (
-    <div className="advance-list">
+    <section className="advance-list">
       <h2>Advances</h2>
       <ul>
         {advanceListItems}
       </ul>
-    </div>
+    </section>
   ); 
 }
 

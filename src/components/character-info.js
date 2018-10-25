@@ -6,7 +6,7 @@ import {updateName} from '../actions/char';
 export function CharacterInfo(props){
 
   return (
-    <div className="character-info">
+    <section className="character-info">
       <form>
         <label htmlFor="char-name">Name: </label> 
         <input  
@@ -20,7 +20,7 @@ export function CharacterInfo(props){
         >
         </input>
       </form>
-    </div>
+    </section>
   );
 }
 

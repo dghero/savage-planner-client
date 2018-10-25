@@ -36,11 +36,11 @@ export function EdgeItem(props){
   .join(', ');
 
   return (
-    <div className="edge-item">
+    <article className="edge-item">
       <h2>{edge.name}</h2>
       <span>Requirements:</span> {finalReqs}
       <p>{edge.description}</p>
-    </div>
+    </article>
   );
 
 }

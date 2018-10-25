@@ -10,8 +10,8 @@ export default function Rules(props){
     <div>
       <Navigation currPage={'rules'} />
       <main role="main">
-        <div className="rules">
-          <h1>Character Creation Rules</h1>
+        <article className="rules">
+          <header><h1>Character Creation Rules</h1></header>
           <p>
             Welcome to Savage Planner, the Savage Worlds Character Builder!
             Savage Worlds is a Tabletop RPG system, similar
@@ -189,7 +189,7 @@ export default function Rules(props){
               <p>
                 For a list of available edges, please see the Edges page.
               </p>
-        </div>
+        </article>
       </main>
     </div>
   );

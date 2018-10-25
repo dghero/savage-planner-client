@@ -19,7 +19,7 @@ export function LoginRegister(props){
       }
       <main role="main">
         <div className="landing">
-          <h1>Welcome to Savage Planner</h1>
+          <header><h1>Welcome to Savage Planner</h1></header>
           <p>Savage Planner is a character builder for the Tabletop RPG
             game system, Savage Worlds. For more information, please see
             the Rules page.

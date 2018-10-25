@@ -8,12 +8,12 @@ import DisplayXpDropdown from './display-xp-dropdown';
 export default function DisplayStats(props){
 
   return (
-    <div className="display-stats stat-section">
+    <section className="display-stats stat-section">
       <h2>Final Statistics</h2>
       <DisplayXpDropdown />
       <DisplayAttributes />
       <DisplaySkills />
       <DisplayEdges />
-    </div> 
+    </section> 
   );
 }

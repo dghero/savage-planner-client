@@ -24,7 +24,7 @@ class Edges extends Component {
         <Navigation currPage={'edges'} />
         <main role="main">
           <div className="edges">
-            <h1>Edges</h1>
+            <header><h1>Edges</h1></header>
             <ul>
               {formattedEdges}
             </ul>
