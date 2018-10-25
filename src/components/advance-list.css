@@ -51,3 +51,19 @@
 .advance-item--value{
   display:inline-block;
 }
+
+@media(max-width: 600px){
+
+  .advance-field{
+    grid-row-gap: 20px;
+  }
+
+  .advance-field select{
+    height: 30px;
+  }
+
+  .advance-field option{
+    height: 30px;
+  }
+
+}

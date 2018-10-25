@@ -1,10 +1,6 @@
-/* .display-skills{
-  display: inline-block;
-  border: 1px solid black;
-  width: auto;
-  margin: auto;
-  text-align: left;
-} */
+.edges{
+  padding: 0 15px;
+}
 
 .edges ul{
   list-style-type: none;

@@ -5,7 +5,7 @@
 }
 
 .stat-section{
-  display: inline-block;
+  display: block;
   padding-bottom: 10px;
   border-bottom: 1px solid rgb(51, 61, 77);
 }
@@ -38,12 +38,6 @@
   grid-column-gap: 0;
 }
 
-@media (max-width: 745px){
-  .statbox-list{
-    grid-template-columns: repeat(2, auto );
-  }
-}
-
 .stat{
   border-bottom: 1px solid rgb(51, 61, 77);
 }
@@ -68,6 +62,7 @@
 
 .point-buy{
   margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 .display-edges{
@@ -76,4 +71,36 @@
 
 .xp-dropdown{
   margin: 10px;
+}
+
+@media (max-width: 775px){
+  .statbox-list{
+    grid-template-columns: repeat(2, auto );
+  }
+}
+
+@media(max-width: 600px){
+  .character{
+    padding: 15px;
+  }
+  .statbox{
+    display: block;
+  }
+
+  .statbox-list{
+    grid-row-gap: 20px;
+  }
+
+  .stat-name{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .stat select{
+    height: 30px;
+    width: 55px
+  }
+
+
 }
